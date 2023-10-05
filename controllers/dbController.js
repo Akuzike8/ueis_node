@@ -1,7 +1,6 @@
 const Sequelize = require("sequelize")
 const host = "localhost"
 const db = "ueis"
-const port = "3306"
 const user = "root"
 const password = "password123"
 
