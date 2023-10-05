@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script defer src="../static/javascript/serialport.js"></script>
+    <script defer src="../static/javascript/card_scan.js"></script>
 </head>
 <body>
     <div class="container">
@@ -30,8 +31,8 @@
         <div class="row">
             <div class="col row_center">
                 <button id="scan-btn" class="btn btn-primary">Scan card</button>
-                <form action="#" method="post">
-                    <input type="file" name="qr-code" id="qr-code" hidden>
+                <form id="card-form" action="/card/auth" method="post">
+                    <input type="text" name="card" id="card-code" hidden>
                 </form>
                 <p id="results">
 

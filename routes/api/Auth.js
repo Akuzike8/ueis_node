@@ -12,8 +12,16 @@ router.get('/register',(req,res) => {
    return res.sendFile(path.join(__dirname+'../../../templates/register.html'))
 })
 
+router.get('/card_reg',(req,res) => {
+   return res.sendFile(path.join(__dirname+'../../../templates/card_reg.html'))
+})
+
 router.get('/fingerprint',(req,res) => {
    return res.sendFile(path.join(__dirname+'../../../templates/fingerprint_auth.html'))
+})
+
+router.get('/fingerprint_enroll',(req,res) => {
+   return res.sendFile(path.join(__dirname+'../../../templates/fingerprint_enroll.html'))
 })
 
 router.get('/reset',(req,res) => {

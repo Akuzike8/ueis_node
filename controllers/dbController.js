@@ -1,17 +1,20 @@
-class dbcontroller
-{
-    static connect = () => {
-        const mongoose = require("mongoose")
-        const engine = "mongodb"
-        const host = "localhost"
-        const dbname = "comm"
-        const port = "27017"
-        const username = ""
-        const passwd = ""
-        const connection = `${engine}://${host}:${port}/${dbname}`
-        mongoose.connect(connection)
-        mongoose.set('strictQuery',false)
-    }
-}
+const Sequelize = require("sequelize")
+const host = "localhost"
+const db = "ueis"
+const port = "3306"
+const user = "root"
+const password = "password123"
 
-module.exports = dbcontroller;
+
+module.exports = new Sequelize(db,user,password,
+    {
+        host,
+        dialect: 'mysql',
+        operatorsAliases: false,
+        pool:{
+            max: 5,
+            min: 0,
+            acquire: 30000,
+            idle: 10000
+        },
+}) ;

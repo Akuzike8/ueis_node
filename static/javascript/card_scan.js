@@ -1,33 +1,33 @@
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
+// scan card button login page
 document.getElementById('scan-btn').addEventListener("click", async () => {
-    const port = await navigator.serial.requestPort();
-    const textDecoder = new TextDecoderStream();
-    await port.open({ baudRate: 9600});
-    const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
-    const reader = textDecoder.readable.getReader();
-    var card_id = ""
-    // Listen to data coming from the serial device.
-        try {
-          while (true) {
-            const { value, done } = await reader.read();
-            console.log(done)
-            if (done) {
-              // Allow the serial port to be closed later.
-              console.log(done)
-              reader.releaseLock();
-              break;
-            }
-            if (value) {
-              card_id += value
-              console.log(value)
-            }
-          }
-        } catch (error) {
-          // TODO: Handle non-fatal read error.
-          console.error(error)
-        }finally{
-            console.log("card_id")
-        }
-      }
+  const port = new SerialPortHandler(
+      { baudRate: 9600},
+      () => console.log("Device connected"),
+      () => console.log("Device disconnected."),
 
-)
+  )
+
+  const info = await port.open();
+
+ // avoids the writing before the arduino is up and running
+  const cardform = document.getElementById("card-form");
+  const cardcode = document.getElementById("card-code");
+  const prompt = document.getElementById("card-prompt-text");
+  prompt.innerText = "Place your card on the sensor";
+  prompt.style.color = "#0d99ff";
+
+  sleep(2000).then(async () => {
+      await port.write("2");
+      const message = await port.read();
+      await port.close();
+      cardcode.setAttribute('value',message);
+      cardform.submit();
+  })
+
+})
+
+

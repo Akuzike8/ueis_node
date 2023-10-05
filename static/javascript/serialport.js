@@ -68,7 +68,7 @@ class SerialPortHandler {
               throw error;
             } finally {
               reader.releaseLock();
-              await this.port.close();
+              //await this.port.close();
             }
           }
     }

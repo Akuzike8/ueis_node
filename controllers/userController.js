@@ -6,18 +6,17 @@ class userController
     //methods
 
     //getting all users
-    static findUser = async (req,res) => {
+    static findUser = (req,res) => {
         try {
-            const users = require("../models/users")
             const db = require("./dbController")
 
-            db.connect();
+            const conn = db.connect("ueis");
 
-            const exists = await users.exists({email: req.body.email});
+            const [user,fields] = conn.execute(`SELECT * FROM users WHERE ueis_id= :id;`,[req.body.id])
 
-            if (!exists) throw new Error("User does not exists");
+            conn.end();
 
-            const user = await users.find();
+            if (!user) throw new Error("User does not exists");
 
             res.status(201).json(user);
 
@@ -31,20 +30,23 @@ class userController
         try {
             const users = require("../models/users")
             const db = require("./dbController")
+            const { v4: uuidv4 } = require('uuid');
+            const id = uuidv4()
 
-            db.connect();
+            const conn = db.connect("ueis");
 
-            const exists = await users.exists({email: req.body.email});
+            const payload = {
+                id,
+                nid: req.body.nid,
+                permit: req.body.permit,
+                passport: req.body.passport
+            }
 
-            if (exists) throw new Error("User already exists");
+            const user = conn.execute(`INSERT INTO digital_identities(id,nid,permit_number,passport_number) VALUES(:id,:nid,:permit,:passport);`,payload);
 
-            const user = await users.create({
-                name: req.body.name,
-                email: req.body.email,
-                role: req.body.role,
-                password: req.body.password,
-                phone: req.body.phone
-            });
+            conn.end();
+
+            if (!user) throw new Error("Failed to create User");
 
             res.status(201).json(user);
 
@@ -60,13 +62,13 @@ class userController
             const users = require("../models/users")
             const db = require("./dbController")
 
-            db.connect();
+            const conn = db.connect("ueis");
 
-            const exists = await users.exists({email: req.body.email});
+            const user = conn.execute(`DELETE FROM users WHERE ueis_id = :id;`,[req.body.id]);
 
-            if (!exists) throw new Error("User does not exists");
+            conn.end()
 
-            const user = await users.deleteMany({email: req.body.email});
+            if (!user) throw new Error("User does not exists");
 
             res.status(201).json(user);
 
@@ -81,13 +83,14 @@ class userController
             const users = require("../models/users")
             const db = require("./dbController")
 
-            db.connect();
+            const conn = db.connect("ueis");
 
-            const exists = await users.exists({email: req.body.email});
+            const user = conn.execute(`UPDATE users`);
 
-            if (!exists) throw new Error("User does not exists");
+            conn.end()
 
-            const user = await users({email: req.body.email});
+            if (!user) throw new Error("User does not exists");
+
 
             res.status(201).json(user);
 
