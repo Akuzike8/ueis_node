@@ -1,0 +1,14 @@
+const express = require("express");
+const router = express.Router();
+const path = require('path');
+const authorize = require('../../middleware/authorize.js')
+const {createUser,findUser, createIdentity} = require("../../controllers/digital_identitiesController.js");
+
+//getting user
+
+//creating user
+router.post('/', createIdentity);
+
+//updating user
+
+module.exports = router;

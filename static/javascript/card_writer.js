@@ -32,7 +32,7 @@ document.getElementById('register-btn').addEventListener("click", async (e) => {
         return res;
     }).then((payload) =>{
         sleep(2000).then(async () => {
-            console.log(payload.token);
+            console.log(payload.data);
             await port.write("1");
             sleep(1000).then(async () => {
                 const feedback = await port.read();
@@ -42,14 +42,24 @@ document.getElementById('register-btn').addEventListener("click", async (e) => {
                     prompt.style.color = "red";
                 }
                 else{
-                    await port.write(payload.token);
+                    await port.write(payload.data);
                     const message = await port.read();
+                    var [id,error] = message.split("T")
                     prompt.innerText = "Card registered";
                     prompt.style.color = "green";
 
                     // request to server to register the card
+                    await fetch('/card/register',{
+                        method: 'POST',
+                        body: JSON.stringify({payload:id}),
+                        headers: {
+                            'Content-type': 'application/json; charset=UTF-8',
+                        },
+                    }).then((res) => {
+                        console.log(res)
 
-                    console.log(message);
+                    })
+                    console.log(id);
                 }
                 await port.close();
             })

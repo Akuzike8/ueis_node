@@ -3,7 +3,6 @@ const cors = require("cors");
 const path = require('path');
 const exphbs = require('express-handlebars')
 const cookieParser = require('cookie-parser')
-const bodyParser = require('body-parser')
 const hostname = "127.0.0.1"
 const PORT = process.env.PORT || 3000;
 
@@ -29,7 +28,7 @@ app.use("/Dashboard",require("./routes/api/Dashboard"));
 
 app.use("/Auth",require("./routes/api/Auth"));
 
-app.use("/user",require("./routes/api/User"));
+app.use("/identity",require("./routes/api/identity"));
 
 app.use('/card',require("./routes/api/card"));
 
