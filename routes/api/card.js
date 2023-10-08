@@ -8,32 +8,39 @@ const jwt = require('jsonwebtoken');
 const cardcontroller = require('../../controllers/cardController');
 const digital_identities = require("../../models/digital_identities");
 
-router.post('/auth',(req,res) => {
+router.post('/auth', async (req,res) => {
     try {
             var card = req.body.card;
 
             const publickey = fs.readFileSync(path.join(__dirname+'../../../keys/public.key')).toString();
+            const privatekey = fs.readFileSync(path.join(__dirname+'../../../keys/private.key')).toString();
 
             // check for the validity of card no
-            const [id,input] = card.split(":");
+            const [id,input] = card.split(":")
 
-            const card_id = cardcontroller.authenticate(id);
+            const card_ids = id.split("Time")
+
+            const card_id = await cardcontroller.authenticate(id);
 
             if(card_id == 0) throw new Error('Invalid card');
 
             // verifying the card of the data
-            jwt.verify(input,publickey,{algorithm: 'RS256'},(err,decoded) =>{
+            var [ueis_id,error] = input.split("T")
 
-                if (err) res.status(400).json({message:err.message})
+            const card_ueis = await cardcontroller.retrive(ueis_id);
 
-            });
+            if(card_ids[1] != card_ueis) throw new Error('Fake card');
 
-            res.status(200).json({message:"valid card"})
+            jwt.sign(ueis_id,privatekey,{algorithm:'RS256'},(err,token) => {
+                if(err) throw new Error(err.message)
+
+                res.status(201).json({token})
+            })
 
 
     } catch (error) {
 
-        console.error(error.message);
+        res.status(400).json({message:error.message})
     }
 
 

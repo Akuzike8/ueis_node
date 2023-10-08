@@ -8,10 +8,15 @@ const digital_identities = db.define('digital_identities',{
         allowNull: false
     },
     nid:{type: Sequelize.STRING,allowNull: true},
+
     permit_number:{type: Sequelize.STRING,allowNull: true},
+
     passport_number:{type: Sequelize.STRING,allowNull: true},
+
     email:{type: Sequelize.STRING,allowNull: true},
+
     fingerprint_id:{type: Sequelize.INTEGER,allowNull: true},
+    
     role:{
         type: Sequelize.ENUM(['user','admin']),
         allowNull: false,

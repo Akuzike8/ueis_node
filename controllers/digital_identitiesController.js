@@ -1,5 +1,18 @@
 class digital_identitiesController
 {
+    static authenticate = (id) => {
+        try {
+            const identities = require("../models/digital_identities")
+            const identity = identities.findOne({where: {id}})
+
+            if(!identity) throw new Error("Identity does not exist")
+
+            return true;
+
+        } catch (error) {
+
+        }
+    }
     static findIdentity = (nid) => {
         try {
             const identities = require("../models/digital_identities")

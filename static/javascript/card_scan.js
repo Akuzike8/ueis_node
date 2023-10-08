@@ -24,8 +24,22 @@ document.getElementById('scan-btn').addEventListener("click", async () => {
       await port.write("2");
       const message = await port.read();
       await port.close();
-      cardcode.setAttribute('value',message);
-      cardform.submit();
+
+      fetch('/card/auth',{
+        method: 'POST',
+        headers: {
+          "Content-Type":"application/json",
+        },
+        body: JSON.stringify({card:message})
+        
+      }).then((res) => {
+        fetch('/auth/fingerprint',{
+          method: 'GET',
+          headers: {
+            authorization: `Bearer ${res.tokenn}`,
+          }
+        })
+      })
   })
 
 })

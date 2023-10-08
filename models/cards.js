@@ -18,7 +18,7 @@ const cards = db.define('cards', {
         type: Sequelize.ENUM(['active','blocked','stolen','lost']),
         defaultValue: 'active'
     },
-    createdAt:false,
+    
 })
 
 module.exports = cards;
