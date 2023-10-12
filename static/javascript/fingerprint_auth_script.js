@@ -2,42 +2,12 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-function onTouchstart () {
-    fingerprint.classList.add('active');
-    timer = setTimeout(onSuccess,2000)
-}
-
-function onTouchEnd() {
-    fingerprint.classList.remove('active')
-    clearTimeout(timer)
-}
-
-function onSuccess() {
-    body.removeEventListener('mousedown', onTouchstart);
-    body.removeEventListener('touchstart', onTouchstart);
-
-
-    fingerprint.classList.remove('active');
-    center.classList.add('success')
-
-    clearTimeout(timerSuccesss);
-
-    timerSuccesss = setTimeout(() => {
-        body.addEventListener('mousedown', onTouchstart);
-        body.addEventListener('touchstart', onTouchstart);
-        center.classList.remove('success')
-
-    },3000);
-}
-
 //Login button configurations
-let body = document.querySelector('body');
-let fingerprint = document.querySelector('.fingerprint');
-let center = document.querySelector('.center');
-let scan = document.querySelector('.scan');
-let timer, timerSuccesss;
 
 const login_btn = document.getElementById('login_btn');
+const fingerprint = document.querySelector('.fingerprint');
+const success = document.getElementById('fingerPic');
+let timer, timerSuccesss;
 
 login_btn.addEventListener('mouseenter',() => {
     const login_btn_pic = document.getElementById('login_btn_pic');
@@ -84,10 +54,33 @@ login_btn.addEventListener('click', async(e) => {
     });
 })
 
+function onTouchstart () {
+    fingerprint.classList.add('active');
+    timer = setTimeout(onSuccess,2000)
+}
+
+function onTouchEnd() {
+    fingerprint.classList.remove('active')
+    clearTimeout(timer)
+}
+
+function onSuccess() {
+    body.removeEventListener('mousedown', onTouchstart);
+    body.removeEventListener('touchstart', onTouchstart);
 
 
+    fingerprint.classList.remove('active');
+    center.classList.add('success')
 
+    clearTimeout(timerSuccesss);
 
+    timerSuccesss = setTimeout(() => {
+        body.addEventListener('mousedown', onTouchstart);
+        body.addEventListener('touchstart', onTouchstart);
+        center.classList.remove('success')
+
+    },3000);
+}
 
 
 

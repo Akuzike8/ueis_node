@@ -66,6 +66,12 @@ h1,h3,h5,h6{
     width: 1.5em;
 }
 
+body{
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
 #email-img{
     width: 1.5em;
 }
@@ -130,22 +136,19 @@ h1,h3,h5,h6{
     -webkit-animation: try 2.5s ease-out;
             animation: try 2.5s ease-out;
   }
-  .center svg.fingerprint.active {
-    transform: scale(0.97);
-  }
-  .center svg.fingerprint.active path.clone {
-    stroke-dashoffset: 0;
-  }
-  .center .fingerprint,
+.center svg.fingerprint.active {
+  transform: scale(0.97);
+}
+.center svg.fingerprint.active path.clone {
+  stroke-dashoffset: 0;
+}
+
 .center .icon-success {
   width: 135px;
   height: 135px;
   overflow: visible;
 }
-.center .icon-success {
-  position: absolute;
-  top: 40px;
-}
+
 .center .icon-success circle {
   transform-origin: 50% 50%;
   transform: scale(0);

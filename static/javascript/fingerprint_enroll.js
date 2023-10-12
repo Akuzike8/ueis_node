@@ -7,6 +7,7 @@ nid.addEventListener('focus',() => {
     nid.style.border = "0.05em #D9D9D9 solid";
     nid.style.borderLeft = "0.05em white solid";
 })
+
 //fingerprint button configurations
 
 const finger_btn = document.getElementById("finput");
