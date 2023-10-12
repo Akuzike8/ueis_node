@@ -12,13 +12,13 @@ const cards = db.define('cards', {
         type: Sequelize.STRING
     },
     ueis_id:{
-        type: Sequelize.UUIDV4
+        type: Sequelize.STRING
     },
     status:{
         type: Sequelize.ENUM(['active','blocked','stolen','lost']),
         defaultValue: 'active'
     },
-    
+
 })
 
 module.exports = cards;

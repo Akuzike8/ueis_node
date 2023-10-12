@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const path = require('path');
 const exphbs = require('express-handlebars')
+const sessions = require('express-session')
 const cookieParser = require('cookie-parser')
 const hostname = "127.0.0.1"
 const PORT = process.env.PORT || 3000;
@@ -18,6 +19,18 @@ app.use(express.urlencoded({extended:false}));
 app.use(cors());
 
 app.use(cookieParser());
+
+app.use(sessions({
+    name: 'ueisAuth',
+    secret: 'randompassword',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      httpOnly: true,
+      maxAge: 3600000,
+      secure: false,
+    }
+}));
 
 //routes
 app.get('/',(req,res) => {

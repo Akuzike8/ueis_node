@@ -2,7 +2,40 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
+function onTouchstart () {
+    fingerprint.classList.add('active');
+    timer = setTimeout(onSuccess,2000)
+}
+
+function onTouchEnd() {
+    fingerprint.classList.remove('active')
+    clearTimeout(timer)
+}
+
+function onSuccess() {
+    body.removeEventListener('mousedown', onTouchstart);
+    body.removeEventListener('touchstart', onTouchstart);
+
+
+    fingerprint.classList.remove('active');
+    center.classList.add('success')
+
+    clearTimeout(timerSuccesss);
+
+    timerSuccesss = setTimeout(() => {
+        body.addEventListener('mousedown', onTouchstart);
+        body.addEventListener('touchstart', onTouchstart);
+        center.classList.remove('success')
+
+    },3000);
+}
+
 //Login button configurations
+let body = document.querySelector('body');
+let fingerprint = document.querySelector('.fingerprint');
+let center = document.querySelector('.center');
+let scan = document.querySelector('.scan');
+let timer, timerSuccesss;
 
 const login_btn = document.getElementById('login_btn');
 
@@ -31,7 +64,9 @@ login_btn.addEventListener('click', async(e) => {
    // avoids the writing before the arduino is up and running
    sleep(2000).then(async () => {
         await port.write("4");
+        onTouchstart()
         var message = await port.read();
+        onTouchEnd()
         prompt.style.color = "#0d99ff";
         console.log(message);
         await port.close();
@@ -50,42 +85,9 @@ login_btn.addEventListener('click', async(e) => {
 })
 
 
-let body = document.querySelector('body');
-let fingerprint = document.querySelector('.fingerprint');
-let center = document.querySelector('.center');
-let scan = document.querySelector('.scan');
-let timer, timerSuccesss;
 
 
-function onSuccess() {
-    body.removeEventListener('mousedown', onTouchstart);
-    body.removeEventListener('touchstart', onTouchstart);
 
 
-    fingerprint.classList.remove('active');
-    center.classList.add('success')
 
-    clearTimeout(timerSuccesss);
 
-    timerSuccesss = setTimeout(() => {
-        body.addEventListener('mousedown', onTouchstart);
-        body.addEventListener('touchstart', onTouchstart);
-        center.classList.remove('success')
-
-    },3000);
-}
-
-function onTouchstart () {
-    fingerprint.classList.add('active');
-    timer = setTimeout(onSuccess,2000)
-}
-
-function onTouchEnd() {
-    fingerprint.classList.remove('active')
-    clearTimeout(timer)
-}
-
-body.addEventListener('mousedown', onTouchstart)
-body.addEventListener('touchstart', onTouchstart)
-body.addEventListener('mouseup', onTouchEnd)
-body.addEventListener('touchend', onTouchEnd)

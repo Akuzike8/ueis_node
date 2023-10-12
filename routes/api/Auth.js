@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const path = require('path');
 const {generateToken, verifyToken, refreshToken} = require('../../controllers/authController')
+const authorize = require('../../middleware/authorize.js')
 
 // Authentication pages
 router.get('/login',(req,res) => {
@@ -16,7 +17,7 @@ router.get('/card_reg',(req,res) => {
    return res.sendFile(path.join(__dirname+'../../../templates/card_reg.html'))
 })
 
-router.get('/fingerprint',(req,res) => {
+router.get('/fingerprint',authorize,(req,res) => {
    return res.sendFile(path.join(__dirname+'../../../templates/fingerprint_auth.html'))
 })
 

@@ -1,25 +1,22 @@
 const express = require("express");
-const crypto = require('crypto');
-const RSA = require('node-rsa');
 const router = express.Router();
 const path = require('path');
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const cardcontroller = require('../../controllers/cardController');
-const digital_identities = require("../../models/digital_identities");
+const authorize = require("../../middleware/authorize");
 
 router.post('/auth', async (req,res) => {
     try {
             var card = req.body.card;
 
-            const publickey = fs.readFileSync(path.join(__dirname+'../../../keys/public.key')).toString();
             const privatekey = fs.readFileSync(path.join(__dirname+'../../../keys/private.key')).toString();
 
             // check for the validity of card no
             const [id,input] = card.split(":")
 
-            const card_ids = id.split("Time")
-
+            //const card_ids = id.split("Time")
+            //console.log(card_ids)
             const card_id = await cardcontroller.authenticate(id);
 
             if(card_id == 0) throw new Error('Invalid card');
@@ -29,18 +26,21 @@ router.post('/auth', async (req,res) => {
 
             const card_ueis = await cardcontroller.retrive(ueis_id);
 
-            if(card_ids[1] != card_ueis) throw new Error('Fake card');
+            if(id != card_ueis) throw new Error('Fake card');
 
-            jwt.sign(ueis_id,privatekey,{algorithm:'RS256'},(err,token) => {
+            jwt.sign(ueis_id,privatekey,{algorithm:'RS256',allowInsecureKeySizes:true},(err,token) => {
+
                 if(err) throw new Error(err.message)
 
-                res.status(201).json({token})
+                req.session.token = token
+
+                return res.status(201).redirect('/Auth/fingerprint')
             })
 
 
     } catch (error) {
 
-        res.status(400).json({message:error.message})
+        return res.status(400).json({message:error.message})
     }
 
 
@@ -48,10 +48,9 @@ router.post('/auth', async (req,res) => {
 
 })
 
-router.post('/write', async (req,res) => {
+router.post('/write', authorize, async (req,res) => {
     try {
         const nid = req.body.nid;
-        const issued = new Date().toISOString().split('T')[0];
         const {findIdentity} = require("../../controllers/digital_identitiesController")
         const identity = await findIdentity(nid);
         const ueis_id = identity.ueis_id
@@ -75,7 +74,7 @@ router.post('/register', async (req,res) => {
         // verifying the card of the data
         cardcontroller.register(cid,ueis_id)
 
-        res.status(200).json({message:"valid card"})
+        res.status(201).json({message:"registered card"})
 
     } catch (error) {
 

@@ -25,21 +25,9 @@ document.getElementById('scan-btn').addEventListener("click", async () => {
       const message = await port.read();
       await port.close();
 
-      fetch('/card/auth',{
-        method: 'POST',
-        headers: {
-          "Content-Type":"application/json",
-        },
-        body: JSON.stringify({card:message})
-        
-      }).then((res) => {
-        fetch('/auth/fingerprint',{
-          method: 'GET',
-          headers: {
-            authorization: `Bearer ${res.tokenn}`,
-          }
-        })
-      })
+      cardcode.value = message;
+      cardform.submit();
+      
   })
 
 })

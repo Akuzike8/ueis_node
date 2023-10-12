@@ -39,8 +39,7 @@ class cardController
     static register = async (card_id,ueis_id) => {
         try {
             const cards = require("../models/cards")
-
-            const card = await cards.create({card_id,ueis_id})
+            const card = await cards.create({card_id,ueis_id:ueis_id.trim()})
 
             if (!card) throw new Error("Failed to register card");
 
