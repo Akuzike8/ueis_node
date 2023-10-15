@@ -4,6 +4,6 @@ const path = require('path');
 const authorize = require('../../middleware/authorize.js')
 
 router.get("/",authorize,(req,res) => {
-   return res.sendFile(path.join(__dirname+'../../../templates/user_dashboard.html'))
+   return res.sendFile(path.join(__dirname+'../../../templates/user_dash.html'))
 })
 module.exports = router;

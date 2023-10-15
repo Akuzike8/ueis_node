@@ -1,0 +1,61 @@
+  /* Data Tables */
+  div.dataTables_wrapper {
+      margin: 0 auto;
+  }
+
+  .add-user-icon,
+  .add-something-icon {
+    height: 40px;
+    width: 40px;
+  }
+
+  /* Content area */
+  .content {
+    margin-left: 275px;
+    margin-top: 60px;
+    padding: 20px;
+  }
+
+  /*.card {
+    width: 200px;
+  }*/
+
+  .profile-container {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+  }
+
+  .profile-container .left-section {
+    width: 70%;
+    background-color: var(--white-color);
+    box-shadow: 0 0 1px var(--grey-color-light);
+    padding: 20px;
+  }
+
+  .profile-container .right-section {
+    width: 28%;
+    background-color: var(--white-color);
+    box-shadow: 0 0 1px var(--grey-color-light);
+    padding: 20px;
+  }
+
+  .me-text {
+    font-size: medium;
+  }
+
+  .services_most_used {
+    margin-right: 5.3em;
+  }
+
+  #contact_us {
+    display: none;
+  }
+
+  .profile .text-primary {
+    text-decoration: none;
+  }
+
+  .text-primary a {
+    text-decoration: none;
+  }

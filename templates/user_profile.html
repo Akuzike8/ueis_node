@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../static/images/bg-digital-signature.png">
+
+    <!-- Boxicons CSS -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+
+    <title>User Profile - Unified Electronic Identification System</title>
+
+    <link rel="stylesheet" href="../static/css/style2.css" />
+    <link rel="stylesheet" href="../static/css/owl.carousel.css">
+    <link rel="stylesheet" href="../static/css/card.css">
+    <link rel="stylesheet" href="../static/css/admin_dash.css">
+
+    <link rel="stylesheet" href="../static/css/datatables.min.css"> <!-- Data Tables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Custom styles -->
+    <link href="dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap py-2">
+        <div class="d-flex">
+            <img src="../static/images/malawi.png" class="logo_item" alt="Logo" width="25">
+            <a class="navbar-brand bg-light text-dark col-md-3 col-lg-2 me-0 px-3 fs-5" href="index.html"
+                style="position: absolute; bottom: .7em; left: 2.2em;">Unified Electronic Identification System</a>
+            <span class="slogan">Empowering connectivity, unifying identity</span>
+        </div>
+
+        <button class="navbar-toggler position-absolute d-md-none collapsed mt-3" type="button"
+            data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+                <i class="fa fa-user mx-3" style="font-size: 40px;"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-5">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="user_dash.html">
+                                <span data-feather="home"></span>
+                                <span class="link-txt">Home</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="user_profile.html">
+                                <span data-feather="users"></span>
+                                <span class="link-txt">User Profile</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="help.html">
+                                <span data-feather="help-circle"></span>
+                                <span class="link-txt">Help &amp; Support</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">
+                                <span data-feather="bar-chart-2"></span>
+                                <span class="link-txt">About</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">
+                                <span data-feather="inbox"></span>
+                                <span class="link-txt">Contact</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h6
+                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>Other</span>
+                        <a class="link-secondary" href="#" aria-label="Add a new report">
+                            <span data-feather="plus-circle"></span>
+                        </a>
+                    </h6>
+
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="log-out"></span>
+                                <span class="link-txt">Signout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mb-5">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h5>Profile Information</h5>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Malango Msowoya</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Citizen</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="user_profile" style="display: block;">
+                    <div class="row">
+                        <div class="col-md-8 my-3">
+                            <h6>My Profile Information</h6>
+                            <div class="d-flex border shadow">
+                                <div class="text-center px-3">
+                                    <div class="profile-card">
+                                        <div class="image mt-4">
+                                            <!-- img src="../static/images/loga.jpg" class="profile-pic img-thumbnail" id="profile-photo"
+                                                alt="Profile Photo" -->
+                                            <i class="fa fa-user-circle"></i>
+                                        </div>
+                                        <div class="data my-4">
+                                            <div>Malango Msowoya</div>
+                                            <span>Citizen</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="user-info mt-4">
+                                    <div class="d-flex mb-4">
+                                        <div class="info">
+                                            <div>Village</div>
+                                            <span>Jamrock</span>
+                                        </div>
+                                        <div class="info px-3">
+                                            <div>T/A</div>
+                                            <span>Logan</span>
+                                        </div>
+                                        <div class="info">
+                                            <div>City</div>
+                                            <span>Spanish Town</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="user-info-row">
+                                        <span class="label">Phone:</span>
+                                        <span class="value">+265 (0) 997 222 157</span>
+                                    </div>
+                                    <div class="divider"></div>
+
+                                    <div class="user-info-row">
+                                        <span class="label">National ID:</span>
+                                        <span class="value">ABCD12345</span>
+                                    </div>
+                                    <div class="divider"></div>
+
+                                    <div class="user-info-row">
+                                        <span class="label">Gender:</span>
+                                        <span class="value">Male</span>
+                                    </div>
+                                    <div class="divider"></div>
+
+                                    <div class="user-info-row">
+                                        <span class="label">Address:</span>
+                                        <span class="value">123 Main St, City</span>
+                                    </div>
+                                    <div class="divider"></div>
+
+                                    <div class="buttons mb-4">
+                                        <a href="#" class="btn text-nowrap">Edit Profile</a>
+                                        <a href="#" class="btn text-nowrap ms-5" onclick="showContent('home')">Go to
+                                            services</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 my-3">
+                            <h6>Most Used Services</h6>
+                            <div class="border shadow p-4">
+                                <div class="d-flex flex-start">
+                                    <img class="rounded-circle shadow-1-strong me-3"
+                                    src="../static/images/mpamba.png" alt="avatar" width="60" height="60" />
+
+                                    <div>
+                                      <h6 class="text-primary mb-2"><a href="#">TNM Mpamba</a></h6>
+                                      <p class="text-muted small mb-0">
+                                        Mobile money service.
+                                      </p>
+                                    </div>
+                                </div>
+
+                                <div class="divider"></div>
+
+                                <div class="d-flex flex-start my-3">
+                                    <img class="rounded-circle shadow-1-strong me-3"
+                                    src="../static/images/health.jpeg" alt="avatar" width="60" height="60" />
+
+                                    <div>
+                                    <h6 class="text-primary mb-2"><a href="#">E-Health</a></h6>
+                                    <p class="text-muted small mb-0">
+                                        Access online health-care services.
+                                    </p>
+                                    </div>
+                                </div>
+
+                                <div class="divider"></div>
+
+                                <div class="d-flex flex-start my-3">
+                                    <img class="rounded-circle shadow-1-strong me-3"
+                                    src="../static/images/vote.png" alt="avatar" width="60" height="60" />
+
+                                    <div>
+                                    <h6 class="text-primary mb-2"><a href="#">E-Vote</a></h6>
+                                    <p class="text-muted small mb-0">
+                                        Conduct voting online.
+                                    </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+
+
+    <!-- Script for DataTables -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
+    <script src="../assets/js/owl.carousel.js"></script>
+    <script src="asset/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+        integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
+        crossorigin="anonymous"></script>
+    <script src="dashboard.js"></script>
+
+    <!-- Custom JS -->
+    <script src="../static/javascript/function.js"></script>
+</body>
+
+</html>

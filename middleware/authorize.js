@@ -8,7 +8,7 @@ const authorize = async (req,res,next) => {
 
         const publickey = fs.readFileSync(path.join(__dirname+'../../keys/public.key')).toString();
         const token = req.session.token
-        
+
         jwt.verify(token,publickey,{algorithm: 'RS256'},(err,decoded) =>{
 
             if (err) res.status(400).json({message:err.message})

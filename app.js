@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 //middleware
+
 app.use('/static',express.static('static'))
 
 app.use(express.json());

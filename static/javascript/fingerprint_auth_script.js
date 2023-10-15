@@ -50,6 +50,7 @@ login_btn.addEventListener('click', async(e) => {
         else{
             prompt.innerText = "Authenticated";
             prompt.style.color = "green";
+            location.href = '/Dashboard/';
         }
     });
 })
