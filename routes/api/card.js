@@ -5,6 +5,7 @@ const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const cardcontroller = require('../../controllers/cardController');
 const authorize = require("../../middleware/authorize");
+const {findUser, findIdentity} = require('../../controllers/digital_identitiesController.js')
 
 router.post('/auth', async (req,res) => {
     try {
@@ -23,16 +24,35 @@ router.post('/auth', async (req,res) => {
 
             // verifying the card of the data
             var [ueis_id,error] = input.split("T")
-
+            let uid = ueis_id
             const card_ueis = await cardcontroller.retrive(ueis_id);
 
             if(id != card_ueis) throw new Error('Fake card');
 
-            jwt.sign(ueis_id,privatekey,{algorithm:'RS256',allowInsecureKeySizes:true},(err,token) => {
+            jwt.sign(ueis_id,privatekey,{algorithm:'RS256',allowInsecureKeySizes:true}, async (err,token) => {
 
                 if(err) throw new Error(err.message)
 
                 req.session.token = token
+
+                const users = require('../../models/citizens')
+
+                const identity = await findUser(uid)
+
+                const user = await users.findOne({where:{nid: identity.nid}})
+
+                let {role, status, ueis_id} = identity
+
+                let {firstname, othername, surname,nid, phone, sex, dob} = user
+
+                req.session.name = `${firstname} ${surname}`
+                req.session.role = `${role}`
+                req.session.ueis_id = `${ueis_id}`
+                req.session.nid = `${nid}`
+                req.session.phone = `${phone}`
+                req.session.sex = `${sex}`
+                req.session.dob = `${dob}`
+                req.session.status = `${status}`
 
                 return res.status(201).redirect('/Auth/fingerprint')
             })
@@ -40,7 +60,7 @@ router.post('/auth', async (req,res) => {
 
     } catch (error) {
 
-        return res.status(400).json({message:error.message})
+        return res.status(400).render('error',{layout: false,status:400,error:error.message})
     }
 
 
@@ -61,7 +81,7 @@ router.post('/write', authorize, async (req,res) => {
 
     } catch (error) {
 
-        return res.status(400).json({message: error.message});
+        return res.status(400).render('error',{layout: false,status:400,error:error.message})
     }
 
 })
@@ -78,7 +98,7 @@ router.post('/register', async (req,res) => {
 
     } catch (error) {
 
-        return res.status(400).json({message: error.message});
+        return res.status(400).render('error',{layout: false,status:400,error:error.message})
     }
 })
 

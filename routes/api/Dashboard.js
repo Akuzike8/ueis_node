@@ -5,35 +5,103 @@ const authorize = require('../../middleware/authorize.js')
 const {findUser, findIdentity} = require('../../controllers/digital_identitiesController.js')
 
 router.get("/",authorize,async (req,res) => {
-   const ueis_id = res.locals.decoded
 
-   const users = require('../../models/citizens')
+   const payload = {
+      name: req.session.name,
+      role: req.session.role,
+      ueis_id: req.session.id,
+      nid: req.session.nid,
+      phone: req.session.phone,
+      sex: req.session.sex,
+      dob: req.session.dob,
+      status: req.session.status
+   }
 
-   const identity = await findUser(ueis_id)
+   let {name, role, ueis_id, nid, phone, sex, dob, status} = payload
 
-   const user = await users.findOne({where:{nid: identity.nid}})
-   let {firstname,othername, surname, phone, sex, dob} = user
-   let name = firstname.concat([" ",surname])
-   res.render('user_dash', {name});
+   res.render('user_dash', {name,role,ueis_id});
 })
 
 router.get("/user_profile",authorize,(req,res) => {
-   res.render('user_profile');
+
+   const payload = {
+      name: req.session.name,
+      role: req.session.role,
+      ueis_id: req.session.id,
+      nid: req.session.nid,
+      phone: req.session.phone,
+      sex: req.session.sex,
+      dob: req.session.dob,
+      status: req.session.status
+   }
+
+   let {name, role, ueis_id, nid, phone, sex, dob, status} = payload
+
+   res.render('user_profile',{name,role,ueis_id,nid,phone,sex,dob,status});
 })
 
 router.get("/help",authorize,(req,res) => {
-   res.render('help');
+   const payload = {
+      name: req.session.name,
+      role: req.session.role,
+      ueis_id: req.session.id,
+      nid: req.session.nid,
+      phone: req.session.phone,
+      sex: req.session.sex,
+      dob: req.session.dob,
+      status: req.session.status
+   }
+
+   let {name, role, ueis_id, nid, phone, sex, dob, status} = payload
+   res.render('help',{name,role,ueis_id});
 })
 
 router.get("/about",authorize,(req,res) => {
-   res.render('about');
+   const payload = {
+      name: req.session.name,
+      role: req.session.role,
+      ueis_id: req.session.id,
+      nid: req.session.nid,
+      phone: req.session.phone,
+      sex: req.session.sex,
+      dob: req.session.dob,
+      status: req.session.status
+   }
+
+   let {name, role, ueis_id, nid, phone, sex, dob, status} = payload
+   res.render('about',{name,role,ueis_id});
 })
 
 router.get("/contact",authorize,(req,res) => {
-   res.render('contact');
+   const payload = {
+      name: req.session.name,
+      role: req.session.role,
+      ueis_id: req.session.id,
+      nid: req.session.nid,
+      phone: req.session.phone,
+      sex: req.session.sex,
+      dob: req.session.dob,
+      status: req.session.status
+   }
+
+   let {name, role, ueis_id, nid, phone, sex, dob, status} = payload
+   res.render('contact',{name,role,ueis_id});
 })
 
 router.get("/otp",authorize,(req,res) => {
-   res.render('otp');
+   const payload = {
+      name: req.session.name,
+      role: req.session.role,
+      ueis_id: req.session.id,
+      nid: req.session.nid,
+      phone: req.session.phone,
+      sex: req.session.sex,
+      dob: req.session.dob,
+      status: req.session.status
+   }
+
+   let {name, role, ueis_id, nid, phone, sex, dob, status} = payload
+   res.render('otp',{name,role,ueis_id,phone});
 })
+
 module.exports = router;

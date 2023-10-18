@@ -52,7 +52,7 @@
     <h5>Profile Information</h5>
     <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Malango Msowoya</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">{{name}}</button>
             <button type="button" class="btn btn-sm btn-outline-secondary">Citizen</button>
         </div>
     </div>
@@ -69,7 +69,7 @@
                             <i class="fa fa-user-circle"></i>
                         </div>
                         <div class="data my-4">
-                            <div>Malango Msowoya</div>
+                            <div>{{name}}</div>
                             <span>Citizen</span>
                         </div>
                     </div>
@@ -93,19 +93,19 @@
 
                     <div class="user-info-row">
                         <span class="label">Phone</span>
-                        <span class="value">+265 (0) 997 222 157</span>
+                        <span class="value">{{phone}}</span>
                     </div>
                     <div class="divider"></div>
 
                     <div class="user-info-row">
                         <span class="label">National ID</span>
-                        <span class="value">ABCD12345</span>
+                        <span class="value">{{nid}}</span>
                     </div>
                     <div class="divider"></div>
 
                     <div class="user-info-row">
-                        <span class="label">Gender</span>
-                        <span class="value">Male</span>
+                        <span class="label">Sex</span>
+                        <span class="value">{{sex}}</span>
                     </div>
                     <div class="divider"></div>
 
@@ -116,7 +116,7 @@
                     <div class="divider"></div>
 
                     <div class="buttons mb-4">
-                        <a href="#" class="btn text-nowrap ms-5" onclick="showContent('home')">Go to services</a>
+                        <a href="/Dashboard/" class="btn text-nowrap ms-5">services</a>
                     </div>
                 </div>
             </div>

@@ -11,15 +11,13 @@ const authorize = async (req,res,next) => {
 
         jwt.verify(token,publickey,{algorithm: 'RS256'},(err,decoded) =>{
 
-            if (err) res.status(400).json({message:err.message})
-
-            res.locals.decoded = decoded
+            if (err) res.status(400).render('error',{layout: false,status:400,error:err.message})
 
             next()
         });
 
     } catch (error) {
-        res.status(400).json({message:error.message})
+        res.status(400).render('error',{layout: false,status:400,error:error.message})
     }
 }
 

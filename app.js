@@ -39,7 +39,7 @@ app.use(sessions({
 
 //routes
 app.get('/',(req,res) => {
-    return res.sendFile(path.join(__dirname+'/views/Welcome.html'))
+    res.render('welcome',{layout:false})
 })
 
 app.use("/Dashboard",require("./routes/api/Dashboard"));
