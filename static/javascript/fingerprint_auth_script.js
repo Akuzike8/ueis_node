@@ -32,12 +32,13 @@ login_btn.addEventListener('click', async(e) => {
     const prompt = document.getElementById("prompt");
 
    // avoids the writing before the arduino is up and running
-   sleep(2000).then(async () => {
+   sleep(1700).then(async () => {
         await port.write("4");
+        prompt.innerText = "Place your finger on the sensor";
+        prompt.style.color = "#0d99ff";
         onTouchstart()
         var message = await port.read();
         onTouchEnd()
-        prompt.style.color = "#0d99ff";
         console.log(message);
         await port.close();
 

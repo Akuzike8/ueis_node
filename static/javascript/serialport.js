@@ -12,7 +12,16 @@ class SerialPortHandler {
 
 	async open() {
         try {
-            const port = await navigator.serial.requestPort();
+            const ports = await navigator.serial.getPorts()
+            let port;
+            
+            if (!ports.length){
+              port = await navigator.serial.requestPort();
+            }
+            else{
+              port = ports[0]
+            }
+
             await port.open(this.options);
 
             this.port = port;

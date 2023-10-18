@@ -51,3 +51,61 @@
     }
   })
 })()
+
+let state = 0
+const home = document.getElementById("home_link");
+const user_profile = document.getElementById("user_link");
+const help = document.getElementById("help_link");
+const about = document.getElementById("about_link");
+const contact = document.getElementById("contact_link");
+
+home.addEventListener("click",() => {
+  if(state == 2) user_profile.classList.remove('active')
+  if(state == 3) help.classList.remove('active')
+  if(state == 4) about.classList.remove('active')
+  if(state == 5) contact.classList.remove('active')
+
+  state = 1
+  home.classList.add('active')
+})
+
+user_profile.addEventListener("click",() => {
+  if(state == 1) home.classList.remove('active')
+  if(state == 3) help.classList.remove('active')
+  if(state == 4) about.classList.remove('active')
+  if(state == 5) contact.classList.remove('active')
+
+  state = 2
+  user_profile.classList.add('active')
+})
+
+help.addEventListener("click",() => {
+  if(state == 1) home.classList.remove('active')
+  if(state == 2) user_profile.classList.remove('active')
+  if(state == 4) about.classList.remove('active')
+  if(state == 5) contact.classList.remove('active')
+
+  state = 3
+  help.classList.add('active')
+})
+
+about.addEventListener("click",() => {
+  if(state == 1) home.classList.remove('active')
+  if(state == 2) user_profile.classList.remove('active')
+  if(state == 3) help.classList.remove('active')
+  if(state == 5) contact.classList.remove('active')
+
+  state = 4
+  about.classList.add('active')
+})
+
+contact.addEventListener("click",() => {
+  if(state == 1) home.classList.remove('active')
+  if(state == 2) user_profile.classList.remove('active')
+  if(state == 3) help.classList.remove('active')
+  if(state == 4) about.classList.remove('active')
+
+  state = 5
+  contact.classList.add('active')
+})
+

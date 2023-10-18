@@ -13,6 +13,8 @@ const authorize = async (req,res,next) => {
 
             if (err) res.status(400).json({message:err.message})
 
+            res.locals.decoded = decoded
+
             next()
         });
 

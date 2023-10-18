@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Inter');
+
 body {
   font-size: 1rem;
+  font-family: "Inter";
 }
 
 .feather, .fa-address-card-o {
@@ -36,6 +39,7 @@ body {
   }
 }
 
+
 .sidebar-sticky {
   position: relative;
   top: 0;
@@ -59,7 +63,7 @@ body {
   color: #2470dc;
 }
 
-.sidebar .nav-link:hover .feather, .fa-address-card-o:hover, 
+.sidebar .nav-link:hover .feather, .fa-address-card-o:hover,
 .sidebar .nav-link.active .feather {
   color: inherit;
 }
@@ -76,15 +80,17 @@ body {
 .link-txt {
   position: relative;
   top: 5px;
+  /*margin-left: 1em;*/
 }
 
 /*
  * Navbar
  */
+ 
 
 .navbar-brand {
-  position: absolute; 
-  bottom: .7em; 
+  position: absolute;
+  bottom: .7em;
   left: 2.2em;
   padding-top: .75rem;
   padding-bottom: .75rem;
@@ -115,7 +121,7 @@ body {
   -ms-box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
   -o-box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
   box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-  border-bottom: 2px solid #2c98f0; 
+  border-bottom: 2px solid #2c98f0;
 }
 .services.color-2 {border-bottom: 2px solid #ec5453; }
 

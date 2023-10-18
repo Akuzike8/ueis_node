@@ -5,32 +5,33 @@ const {generateToken, verifyToken, refreshToken} = require('../../controllers/au
 const authorize = require('../../middleware/authorize.js')
 
 // Authentication pages
-router.get('/login',(req,res) => {
-   return res.sendFile(path.join(__dirname+'../../../templates/login.html'))
-})
 
 router.get('/register',(req,res) => {
-   return res.sendFile(path.join(__dirname+'../../../templates/register.html'))
+   res.render('register',{layout:false})
+})
+
+router.get('/card',(req,res) => {
+   res.render('login',{layout:false})
 })
 
 router.get('/card_reg',(req,res) => {
-   return res.sendFile(path.join(__dirname+'../../../templates/card_reg.html'))
+   res.render('card_reg')
 })
 
 router.get('/fingerprint',authorize,(req,res) => {
-   return res.sendFile(path.join(__dirname+'../../../templates/fingerprint_auth.html'))
+   res.render('fingerprint_auth',{layout:false})
 })
 
 router.get('/fingerprint_enroll',(req,res) => {
-   return res.sendFile(path.join(__dirname+'../../../templates/fingerprint_enroll.html'))
+   res.render('fingerprint_enroll',{layout:false})
 })
 
 router.get('/reset',(req,res) => {
-   return res.sendFile(path.join(__dirname+'../../../templates/reset.html'))
+   res.render('reset',{layout:false})
 })
 
 router.get('/reset_password',(req,res) => {
-   return res.sendFile(path.join(__dirname+'../../../templates/reset_password.html'))
+   res.render('reset_password',{layout:false})
 })
 
 // Authencation functions

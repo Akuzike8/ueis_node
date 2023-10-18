@@ -52,16 +52,16 @@ function openNewPage() {
 var openPageButton1 = document.getElementById('openPageButton1');
 openPageButton1.addEventListener('click', openNewPage);
 
-var openPageButton2 = document.getElementById('openPageButton2'); 
+var openPageButton2 = document.getElementById('openPageButton2');
 openPageButton2.addEventListener('click', openNewPage);
 
-var openPageButton3 = document.getElementById('openPageButton3'); 
+var openPageButton3 = document.getElementById('openPageButton3');
 openPageButton3.addEventListener('click', openNewPage);
 
-var openPageButton4 = document.getElementById('openPageButton4'); 
+var openPageButton4 = document.getElementById('openPageButton4');
 openPageButton4.addEventListener('click', openNewPage);
 
-var openPageButton5 = document.getElementById('openPageButton5'); 
+var openPageButton5 = document.getElementById('openPageButton5');
 openPageButton5.addEventListener('click', openNewPage);
 
 

@@ -13,10 +13,28 @@ class digital_identitiesController
 
         }
     }
-    static findIdentity = (nid) => {
+
+    static findIdentity = async (nid) => {
         try {
             const identities = require("../models/digital_identities")
-            const identity = identities.findOne({where:{nid}})
+            const identity = await identities.findOne({where:{nid}})
+
+            if (!identity) throw new Error("Identity does not exists");
+
+            return identity;
+
+        } catch (error) {
+
+            res.status(401).json({message: error.message})
+        }
+
+    }
+
+    static findUser = (ueis_id) => {
+        try {
+            const identities = require("../models/digital_identities")
+
+            const identity = identities.findOne({where:{ueis_id}})
 
             if (!identity) throw new Error("Identity does not exists");
 

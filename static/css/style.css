@@ -27,7 +27,8 @@ h1,h3,h5,h6{
     align-items: center;
 }
 #card-prompt{
-    margin-top: -2em
+    margin-top: -2em;
+    color: #0d99ff;
 }
 
 .row_center{
@@ -174,6 +175,10 @@ body{
 }
 .center.success .scan-success {
   display: block;
+}
+
+#card-loader{
+  width: 5em;
 }
 @-webkit-keyframes try {
   0%, 100% {

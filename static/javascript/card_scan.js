@@ -17,8 +17,9 @@ document.getElementById('scan-btn').addEventListener("click", async () => {
   const cardform = document.getElementById("card-form");
   const cardcode = document.getElementById("card-code");
   const prompt = document.getElementById("card-prompt-text");
-  prompt.innerText = "Place your card on the sensor";
-  prompt.style.color = "#0d99ff";
+  const loader = document.getElementById("card-loader");
+  prompt.innerText = "Scanning...";
+  loader.removeAttribute("hidden");
 
   sleep(1700).then(async () => {
       await port.write("2");
