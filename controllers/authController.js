@@ -1,5 +1,32 @@
 class authController
 {
+   static generateOTP = async (req,res) => {
+        try {
+            const accountSid = process.env.TWILIO_ACCOUNT_SID;
+            const authToken = process.env.TWILIO_AUTH_TOKEN;
+            const client = require('twilio')(accountSid, authToken);
+            const phone = req.body.phone
+
+            client.messages
+            .create({
+                body: 'UEIS OTP test',
+                from: '+15017122661',
+                to: phone
+            })
+            .then(message => console.log(message.sid));
+        } catch (error) {
+            res.render('error',{layout:false,status:400,error:error.message})
+        }
+   }
+
+   static verifyOTP = async (req,res) => {
+        try {
+
+        } catch (error) {
+
+        }
+   }
+
    static generateToken = async (req,res) => {
         try {
             // JWT token generation function

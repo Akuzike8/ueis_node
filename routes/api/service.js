@@ -102,7 +102,7 @@ router.get('/otp/:service',(req,res) => {
 
     let {name, role, ueis_id, nid, phone, sex, dob, status} = payload
 
-    res.render('otp',{phone,service,layout:false})
+    res.render('otp',{phone,layout:false})
  })
 
 module.exports = router;
