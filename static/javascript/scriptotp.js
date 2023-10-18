@@ -48,3 +48,8 @@ inputs.forEach((input, index1) => {
 
 //focus the first input which index is 0 on window load
 window.addEventListener("load", () => inputs[0].focus());
+
+const btn = document.getElementById('otp_btn').addEventListener('click',(e) => {
+  const form = document.getElementById('form')
+  form.submit()
+})

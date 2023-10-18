@@ -1,672 +1,91 @@
-<!DOCTYPE html>
-<!-- Unified Electronic Identification System -->
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="/static/images/bg-digital-signature.jpg">
+<!-- Favicon -->
+<link rel="shortcut icon" href="/static/images/bg-digital-signature.jpg">
 
-    <!-- Boxicons /static/css -->
-    <link href="https://unpkg.com/boxicons@2.1.4//static/css/boxicons.min./static/css" rel="stylesheet" />
+<!-- Boxicons CSS -->
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 
-    <!-- Bootstrap /static/css -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist//static/css/bootstrap.min./static/css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons./static/css">
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 
-    <title>UEIS</title>
-    <link rel="stylesheet" href="/static/css/style./static/css" />
-    <link rel="stylesheet" href="/static/css/owl.carousel./static/css">
+<title>E-Payment Services - Unified Electronic Identification System</title>
 
-    <style>
-      /* Content area */
-      .content {
-        margin-left: 275px;
-        margin-top: 60px; /* Top nav height */
-        padding: 20px;
-      }
-      .card {
-        width: 200px;
-      }
+<link rel="stylesheet" href="/static/css/style2.css" />
+<link rel="stylesheet" href="/static/css/owl.carousel.css">
+<link rel="stylesheet" href="/static/css/card.css">
+<link rel="stylesheet" href="/static/css/admin_dash.css">
 
-      .profile-container {
-        display: flex;
-        justify-content: space-between;
-        padding-right: 20px;
-      }
-      .profile-container .left-section {
-        width: 70%;
-        background-color: var(--white-color);
-        box-shadow: 0 0 1px var(--grey-color-light);
-        padding: 20px;
-      }
-      .profile-container .right-section {
-        width: 28%;
-        background-color: var(--white-color);
-        box-shadow: 0 0 1px var(--grey-color-light);
-        padding: 20px;
-      }
-      .me-text {
-        font-size: medium;
-      }
+<link rel="stylesheet" href="/static/css/datatables.min.css"> <!-- Data Tables -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
-      .services_most_used {margin-right: 5.3em;}
 
-      #contact_us {display: none;}
+<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
 
-      .profile .text-primary {
-        text-decoration: none;
-      }
 
-      .text-primary a {text-decoration: none;}
-    </style>
-  </head>
+<!-- Bootstrap core CSS -->
+<link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
-  <body>
-    <!-- navbar -->
-    <nav class="navbar">
-      <div class="logo_item">
-        <i class="bx bx-menu" id="sidebarOpen"></i>
-        <img src="/static/images/logo.png" alt="">Unified Electronic Identification System
-      </div>
 
-      <div class="navbar_content">
-        <!--i class="bi bi-grid"></i-->
-        <!--i class='bx bx-sun' id="darkLight"></i-->
-        <i class='bx bx-bell' id="bell"></i>
-        <img src="/static/images/loga.jpg" alt="" class="profile" />
-      </div>
-    </nav>
+<!-- Custom styles -->
+<link href="/static/css/dashboard.css" rel="stylesheet">
 
-    <!-- sidebar -->
-    <nav class="sidebar">
-      <div class="menu_content">
-        <div class="menu_title menu_dahsboard"></div>
-        <ul class="menu_items">
 
-          <!-- start -->
-          <li class="item">
-            <a href="/Dashboard/" class="nav_link submenu_item" onclick="showContent('home')">
-              <span class="navlink_icon">
-                <i class="bx bx-home-alt"></i>
-              </span>
-              <span href="/Dashboard/" class="navlink">Home</span>
-            </a>
-          </li>
-
-
-          <li class="item">
-            <a href="#" class="nav_link submenu_item" onclick="showContent('user_profile')">
-              <span class="navlink_icon">
-              <i class='bx bx-user-circle'></i>
-              </span>
-              <span class="navlink">User Profile</span>
-            </a>
-          </li>
-
-          <li class="item">
-            <a href="#" class="nav_link" onclick="showContent('help')">
-              <span class="navlink_icon">
-              <i class='bx bx-help-circle'></i>
-              </span>
-              <span class="navlink">Help</span>
-            </a>
-          </li>
-
-          <li class="item">
-            <a href="#" class="nav_link" onclick="showContent('about_us')">
-              <span class="navlink_icon">
-              <i class='bx bx-library'></i>
-              </span>
-              <span class="navlink">About</span>
-            </a>
-          </li>
-
-          <li class="item">
-            <a href="#" class="nav_link" onclick="showContent('contact_us')">
-              <span class="navlink_icon">
-              <i class='bx bx-link-alt'></i>
-              </span>
-              <span class="navlink">Contact</span>
-            </a>
-          </li>
-
-        </ul>
-
-        <div class="bottom_content ">
-          <ul class="menu_items">
-            <li class="item">
-              <a href="#" class="nav_link">
-                <span class="navlink_icon">
-                  <i class='bx bx-log-out'></i>
-                </span>
-                <span class="navlink">Logout</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="bottom_content">
-          <div class="bottom "> <!--expand_sidebar-->
-           <!--i class='bx bx-dots-horizontal-rounded'></i--> UEIS 2023
-          </div>
-          <div class="bottom "> <!--collapse_sidebar-->
-            <!--i class='bx bx-dots-horizontal-rounded'></i--> UEIS 2023
-          </div>
-        </div>
-
-      </div>
-    </nav>
-
-
-    <!-- Content -->
-    <div class="content">
-      <div id="home">
-        <h2>UEIS E-Payment</h2>
-        <div class="owl-carousel owl-theme row">
-          <div class="item text-muted me-3">
-              <div class="likes">
-                <div class="d-flex flex-start">
-                  <div class="position-relative mx-5">
-                    <img class="rounded-circle" src="/static/images/supporting-person.svg" alt="avatar" width="70" height="70" />
-                  </div>
-
-                  <div class="text-start">
-                    <h5>Authentication!</h5>
-                    <span class="me-text">
-                      Grant users access to various services while ensuring secure and convenient access with minimal reliance on
-                      traditional credentials like usernames and passwords.
-                    </span>
-                  </div>
-                </div>
-              </div>
-          </div>
-
-          <div class="item text-muted me-3">
-              <div class="likes">
-                <div class="d-flex flex-start">
-                  <div class="position-relative mx-5">
-                    <img class="rounded-circle" src="img/supporting-person.svg" alt="avatar" width="70" height="70" />
-                  </div>
-
-                  <div class="text-start">
-                    <h5>Reliability!</h5>
-                    <span class="me-text">
-                      Error-free verification of user identities, maintaining service availability and ensuring data security, as
-                      well as ability to comply with regulations.
-                    </span>
-                  </div>
-                </div>
-              </div>
-          </div>
-
-          <div class="item text-muted me-3">
-              <div class="likes">
-                <div class="d-flex flex-start">
-                  <div class="position-relative mx-5">
-                    <img class="rounded-circle" src="img/supporting-person.svg" alt="avatar" width="70" height="70" />
-                  </div>
-
-                  <div class="text-start">
-                    <h5>Security!</h5>
-                    <span class="me-text">
-                      Biometric authentication, access control and compliance with regulations to protect user data ensure data
-                      integrity and privacy.
-                    </span>
-                  </div>
-                </div>
-              </div>
-          </div>
-
-          <div class="item text-muted me-3">
-              <div class="likes">
-                <div class="d-flex flex-start">
-                  <div class="position-relative mx-5">
-                    <img class="rounded-circle" src="img/supporting-person.svg" alt="avatar" width="70" height="70" />
-                  </div>
-
-                  <div class="text-start">
-                    <h5>Conveniency!</h5>
-                    <span class="me-text">
-                      UEIS offers streamlined and time-saving access to a variety of services using a single set of credentials
-                      while ensuring efficient experience.
-                    </span>
-                  </div>
-                </div>
-
-              </div>
-          </div>
-        </div>
-
-
-        <p class="lead">Want to experiecnce the most with UEIS, choose a service below:</p>
-
-        <div class="container">
-          <div class="box-container">
-            <div class="box e_bank" style="background: url('');">
-              <img src="img/Airtel.jpg" alt="" class="mb-2">
-              <h3>Airtel</h3>
-              <a href="OTP.html" class="btn">Open</a>
-            </div>
-
-            <div class="box e_pay" style="background: url('');">
-                <img src="img/mpamba.png" alt="" class="mb-2">
-                <h3>TNM Mpamba</h3>
-                <a href="OTP.html" class="btn" >Open</a>
-            </div>
-
-            <div class="box e_vote" style="background: url('');">
-                <img src="img/MK.png" alt="" class="mb-2">
-                <h3>Mukuru</h3>
-                <a href="OTP.html" class="btn" >Open</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div id="user_profile">
-        <h2>Profile Information</h2>
-        <div class="row">
-
-          <div class="profile-container">
-            <p class="lead">My details</h2>
-            <p class="lead services_most_used">Most Used Services</p>
-          </div>
-
-          <div class="profile-container ms-0">
-            <div class="left-section">
-                <!-- Content for the left section -->
-                <div class="d-flex">
-                  <div class="overview text-center mx-4">
-                    <div class="profile-card">
-                      <div class="image mt-4">
-                        <img src="img/loga.jpg" class="profile-pic img-thumbnail"
-                          id="profile-photo" alt="Profile Photo"
-                        >
-                      </div>
-                      <div class="data my-4">
-                        <div>Samuel Loga</div>
-                        <span>Citizen</span>
-                      </div>
-
-                    </div>
-                  </div>
-
-                  <div class="more">
-                    <div class="user-info">
-                      <div class="d-flex mb-4">
-                        <div class="info">
-                          <div>Village</div>
-                          <span>Jamrock</span>
-                        </div>
-                        <div class="info mx-3">
-                          <div>T/A</div>
-                          <span>Logan</span>
-                        </div>
-                        <div class="info">
-                          <div>City</div>
-                          <span>Spanish Town</span>
-                        </div>
-                      </div>
-
-                      <div class="user-info-row">
-                          <span class="label">Phone:</span>
-                          <span class="value">+265 (0) 997 222 157</span>
-                      </div>
-                      <div class="divider"></div>
-
-                      <div class="user-info-row">
-                          <span class="label">National ID:</span>
-                          <span class="value">ABCD12345</span>
-                      </div>
-                      <div class="divider"></div>
-
-                      <div class="user-info-row">
-                          <span class="label">Gender:</span>
-                          <span class="value">Male</span>
-                      </div>
-                      <div class="divider"></div>
-
-                      <div class="user-info-row">
-                          <span class="label">Address:</span>
-                          <span class="value">123 Main St, City</span>
-                      </div>
-                      <div class="divider"></div>
-
-                      <div class="buttons mb-4">
-                        <a href="#" class="btn text-nowrap">Edit Profile</a>
-                        <a href="#" class="btn text-nowrap ms-5" onclick="showContent('home')">Go to services</a>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-            </div>
-
-            <div class="right-section">
-              <!-- Content for the right section -->
-              <div class="d-flex flex-start my-3">
-                <img class="rounded-circle shadow-1-strong me-3"
-                src="img/mpamba.png" alt="avatar" width="60" height="60" />
-
-                <div>
-                  <h6 class="text-primary mb-2"><a href="#">TNM Mpamba</a></h6>
-                  <p class="text-muted small mb-0">
-                    Mobile money service.
-                  </p>
-                </div>
-              </div>
-
-              <div class="divider"></div>
-
-              <div class="d-flex flex-start my-3">
-                <img class="rounded-circle shadow-1-strong me-3"
-                src="img/health.jpeg" alt="avatar" width="60" height="60" />
-
-                <div>
-                  <h6 class="text-primary mb-2"><a href="#">E-Health</a></h6>
-                  <p class="text-muted small mb-0">
-                    Access online health-care services.
-                  </p>
-                </div>
-              </div>
-
-              <div class="divider"></div>
-
-              <div class="d-flex flex-start my-3">
-                <img class="rounded-circle shadow-1-strong me-3"
-                src="img/vote.png" alt="avatar" width="60" height="60" />
-
-                <div>
-                  <h6 class="text-primary mb-2"><a href="#">E-Vote</a></h6>
-                  <p class="text-muted small mb-0">
-                    Conduct voting online.
-                  </p>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- About UEIS -->
-      <div id="about_us">
-        <div class="container">
-            <div class="row">
-                <!-- First Column with About Us Header and Explanation -->
-                <div class="col-md-6">
-                    <h2>About UEIS</h2>
-                    <p class="text-muted">
-                      Eletronic Identification System UEIS (UEIS) is a system that enables individuals to use a
-                      single electronic identity to authenticate themselves across various digital services.
-                      Benefits of using UEIS includes increased security, convenience, and cost-effectiveness.
-                      <span class="read-more-content">
-                        The system also poses significant challenges, including privacy concerns, data protection,
-                        and cybersecurity risks which might not be directly linked to our delivery model.
-                        Overall, the UEIS has significant implications on individuals, governments, and society as a whole.
-                      </span>
-                    </p>
-
-                    <button class="read-more-button">
-                      <span class="icon">Read More</span>
-                    </button>
-                </div>
-                <!-- Second Column with Image -->
-                <div class="col-md-6">
-                    <img src="img/ueis.avif" alt="About Us Image" class="img-fluid">
-                </div>
-            </div>
-        </div>
-
-
-        <p class="lead mt-5">The following vision, mission and goal are the driving forces of UEIS. See them below:</p>
-        <div class="container mb-5">
-          <div class="row">
-            <!-- First Column with Vision -->
-            <div class="col-md-4 text-center">
-                <img class="shadow-1-strong mb-3"
-                  src="img/light-bulb-electricity-svgrepo-com.svg" alt="avatar" width="50" height="50" />
-
-                <h4 class="mb-3">Vision</h4>
-
-                <p class="">Secure Digital Landscape</p>
-                <p class="">Privacy and Data Security</p>
-                <p class="">Ease of Access to Services</p>
-                <p class="">Seamless Interactions</p>
-            </div>
-
-            <!-- Second Column with Mission -->
-            <div class="col-md-4 text-center">
-                <img class="shadow-1-strong mb-3"
-                  src="img/target-svgrepo-com.svg" alt="avatar" width="50" height="50" />
-
-                <h4 class="mb-3">Mission</h4>
-
-                <p class="">Convenience and Efficiency</p>
-                <p class="">Enhanced Security</p>
-                <p class="">Reduced Redundancy</p>
-                <p class="">Fraud Prevention</p>
-            </div>
-            <!-- Third Column with Goals -->
-            <div class="col-md-4 text-center">
-              <img class="shadow-1-strong mb-3"
-                  src="img/correct-success-tick-svgrepo-com.svg" alt="avatar" width="50" height="50" />
-
-              <h3 class="mb-3">Core Values</h3>
-
-              <p class="card-text">Transparency</p>
-              <p class="card-text">Inclusivity</p>
-              <p class="card-text">Ethical Use of Data</p>
-              <p class="card-text">Security and Privacy</p>
-            </div>
-        </div>
-        </div>
-      </div>
-
-
-      <!-- Help Section -->
-      <div id="help">
-        <h3>Help - FAQ</h3>
-        <p>Some frequently asked questions about UEIS;</p>
-
-        <div class="accordion mb-4" id="faqAccordion">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="question1">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#answer1" aria-expanded="true" aria-controls="answer1">
-                1. What is UEIS, and how does it work?
-              </button>
-            </h2>
-            <div id="answer1" class="accordion-collapse collapse" aria-labelledby="question1" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                This system is designed to simplify the access to multiple services using a single set of credentials. Users register, receive ID cards, and provide fingerprints during registration. To access the system, users scan their ID cards and fingerprint, after which they can access various services seamlessly.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item my-3">
-            <h2 class="accordion-header" id="question2">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answer2" aria-expanded="false" aria-controls="answer2">
-                2. What services can I access through this system?
-              </button>
-            </h2>
-            <div id="answer2" class="accordion-collapse collapse" aria-labelledby="question2" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                With this system, you can access a range of services, including e-health, e-payment, e-voting, digital signatures, and e-banking, all using a single set of credentials.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="question3">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answer3" aria-expanded="false" aria-controls="answer3">
-                3. How do I register for this system?
-              </button>
-            </h2>
-            <div id="answer3" class="accordion-collapse collapse" aria-labelledby="question3" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                To register, visit our registration center or website, where you will be guided through the registration process. You'll need to provide personal information, receive your ID card, and complete fingerprint registration.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item my-3">
-            <h2 class="accordion-header" id="question4">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answer4" aria-expanded="false" aria-controls="answer4">
-                4. Do I need to remember multiple usernames and passwords for the different services?
-              </button>
-            </h2>
-            <div id="answer4" class="accordion-collapse collapse" aria-labelledby="question4" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                No, you only need to remember your unique set of credentials, which includes your ID card and fingerprint. You won't have to manage separate usernames and passwords for each service.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="question5">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answer5" aria-expanded="false" aria-controls="answer5">
-                5. How secure is my data within this system?
-              </button>
-            </h2>
-            <div id="answer5" class="accordion-collapse collapse" aria-labelledby="question5" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                Security is a top priority. Your personal data and access information are protected with advanced security measures, including encryption and multi-factor authentication. We are committed to safeguarding your information.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item my-3">
-            <h2 class="accordion-header" id="question6">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answer6" aria-expanded="false" aria-controls="answer6">
-                6. What should I do if I encounter issues or have questions about using the system?
-              </button>
-            </h2>
-            <div id="answer6" class="accordion-collapse collapse" aria-labelledby="question6" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                If you have any issues or questions, you can reach out to our support team. We have a dedicated help and contact section on our platform where you can find assistance.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="question7">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answer7" aria-expanded="false" aria-controls="answer7">
-                7. How can I update my user profile or make changes to my account information?
-              </button>
-            </h2>
-            <div id="answer7" class="accordion-collapse collapse" aria-labelledby="question7" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                You can update your user profile and account information by logging into the system, accessing your profile, and following the provided instructions for making changes or updates.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item my-3">
-            <h2 class="accordion-header" id="question8">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answer8" aria-expanded="false" aria-controls="answer8">
-                8. Where can I find more information about the system, its features, and policies?
-              </button>
-            </h2>
-            <div id="answer8" class="accordion-collapse collapse" aria-labelledby="question8" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                You can find detailed information about the system, its features, and policies in the "About" section on our platform. We encourage you to explore this section to learn more.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="question9">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answer9" aria-expanded="false" aria-controls="answer9">
-                9. How do I log out of the system when I'm finished using it?
-              </button>
-            </h2>
-            <div id="answer9" class="accordion-collapse collapse" aria-labelledby="question9" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                To log out, simply click on the "Logout" option in the navigation menu. This will securely end your session and log you out of the system.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <p class="lead">Still have questions? Please send them to us by filling in this form:</p>
-
-        <div class="other-help">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="help-container">
-                <p class="text-muted text-center">
-                  <span class="text-danger">*</span>All fields are required<span class="text-danger">*</span>
-                </p>
-                <form>
-                    <label class="form-label" for="faq-email">Email:</label>
-                    <input class="form-input" type="email" id="faq-email" name="faq-email" placeholder="example@email.com" required>
-
-                    <label class="form-label" for="message">Message:</label>
-                    <textarea class="form-textarea" id="faq-message" name="faq-message" placeholder="Your question." required></textarea>
-
-                    <button class="form-submit" type="submit">Submit</button>
-                </form>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <figure>
-                <img src="img/supporting-person.svg" alt="" class="img-fluid" width="400">
-                <div class="text-center">The Supporting Team</div>
-              </figure>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-
-      <div id="contact_us">
-        <div class="container">
-          <div class="row">
-            <!-- Left Column with Image -->
-            <div class="col-md-6">
-                <img src="img/contact-us-01-1.svg" alt="Your Image" class="img-fluid contact-img">
-            </div>
-            <!-- Right Column with Form -->
-            <div class="col-md-6">
-                <h2>Contact Us</h2>
-                <form>
-                  <label class="form-label" for="contact-email">Email:</label>
-                  <input class="form-input" type="email" id="contact-email" name="contact-email" placeholder="example@email.com" required>
-
-                  <label class="form-label" for="email">Subject:</label>
-                  <input class="form-input" type="text" id="contact-subject" name="contact-subject" placeholder="Title of mail" required>
-
-                  <label class="form-label" for="message">Message:</label>
-                  <textarea class="form-textarea" id="contact-message" name="contact-message" placeholder="Your message goes here." required></textarea>
-
-                  <button class="form-submit" type="submit">Submit</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+<!-- Content -->
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h6>Choose a service for e-payment services</h6>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group">
+      <button type="button" class="btn btn-sm btn-outline-secondary">{{name}}</button>
+      <button type="button" class="btn btn-sm btn-outline-secondary">Citizen</button>
     </div>
+  </div>
+</div>
+
+<div class="container" id="banks">
+          <div class="box-container">
+            <div class="box bg-light">
+              <img src="/static/images/Airtel.jpg" alt="" class="img-fluid mb-3" >
+              <h3>Airtel</h3>
+              <a href="#" class="btn">Open</a>
+            </div>
+
+            <div class="box bg-light">
+                <img src="/static/images/mpamba.png" alt="" class="img-fluid mb-3" >
+                <h3>TNM Mpamba</h3>
+                <a href="#" class="btn" >Open</a>
+            </div>
+
+            <div class="box bg-light">
+                <img src="/static/images/MK.png" alt="" class="img-fluid mb-3" >
+                <h3>Mukuru</h3>
+                <a href="#" class="btn" >Open</a>
+            </div>
+          </div>
+        </div>
 
 
+<!-- ApexCharts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.40.0/apexcharts.min.js"></script>
 
-    <!-- ApexCharts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.40.0/apexcharts.min.js"></script>
+<!-- Custom JS -->
+<script src="js/scripts4.js"></script>
 
-    <!-- Custom JS -->
-    <script src="js/scripts4.js"></script>
+<!-- JavaScript -->
+<!-- script src="js/jquery-3.1.1.js"></script-->
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+<script src="js/owl.carousel.js"></script>
+<!-- script src="js/bootstrap.min.js"></script-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js"
+  integrity="sha512-fHY2UiQlipUq0dEabSM4s+phmn+bcxSYzXP4vAXItBvBHU7zAM/mkhCZjtBEIJexhOMzZbgFlPLuErlJF2b+0g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="js/script2.js"></script>
+<script src="js/function.js"></script>
+</body>
 
-    <!-- JavaScript -->
-    <!-- script src="js/jquery-3.1.1.js"></script-->
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="js/owl.carousel.js"></script>
-    <!-- script src="js/bootstrap.min.js"></script-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js" integrity="sha512-fHY2UiQlipUq0dEabSM4s+phmn+bcxSYzXP4vAXItBvBHU7zAM/mkhCZjtBEIJexhOMzZbgFlPLuErlJF2b+0g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="js/script2.js"></script>
-    <script src="js/function.js"></script>
-  </body>
 </html>

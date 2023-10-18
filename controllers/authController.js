@@ -1,29 +1,56 @@
 class authController
 {
-   static generateOTP = async (req,res) => {
+   static generateOTP = async (phone,code,ueis_id) => {
         try {
-            const accountSid = process.env.TWILIO_ACCOUNT_SID;
-            const authToken = process.env.TWILIO_AUTH_TOKEN;
+            const accountSid = "AC32c85f39def9c445dc0d4acac663665d";
+            const authToken = "af6d12ada2434c7897930b181ce4a54c";
             const client = require('twilio')(accountSid, authToken);
-            const phone = req.body.phone
 
             client.messages
             .create({
-                body: 'UEIS OTP test',
-                from: '+15017122661',
-                to: phone
+                body: `UEIS: Your code ${code}. Don't share it.`,
+                to: `${phone}`,
+                from: '+12024172975',
             })
-            .then(message => console.log(message.sid));
+
+            const otps = require('../models/otps')
+
+            console.log(ueis_id)
+
+            let otp = await otps.create({code,ueis_id,phone})
+
+            if(!otp) throw new Error("Failed to store otp");
+
+            return true;
+
         } catch (error) {
-            res.render('error',{layout:false,status:400,error:error.message})
+
+            console.error(error.message)
         }
    }
 
-   static verifyOTP = async (req,res) => {
+   static verifyOTP = async (code,ueis_id) => {
         try {
+
+            const store = require('../models/otps')
+
+            let otps = await store.findAll({where:{ueis_id}})
+
+            if(!otps) throw new Error("Invalid otp");
+
+            for(const otp of otps){
+                if(otp.status == 'valid'){
+                    if(otp.code == code){
+                       console.log(otp)
+                       otps.update({status: "invalid"},{where:{id: otp.id}})
+                       return {valid: true}
+                    }
+                }
+            }
 
         } catch (error) {
 
+           return {valid: error.message}
         }
    }
 

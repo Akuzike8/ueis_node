@@ -22,7 +22,7 @@
       <br>
       <p>Provide code sent to <span class="text-primary">{{phone}}</span> </p>
       <br>
-      <form action="#">
+      <form id="form" action="/service/{{service}}">
         <div class="input-field">
           <input type="number" name="otp_num_1" placeholder="*" />
           <input type="number" name="otp_num_2" placeholder="*" disabled />
@@ -32,7 +32,7 @@
           <input type="number" name="otp_num_6" placeholder="*" disabled />
         </div>
 
-        <a href="/service/{{service}}" type="button" class="my-5 go_to_bank_services">Verify OTP</a>
+        <a id="otp_btn" type="button" class="my-5 go_to_bank_services">Verify OTP</a>
 
         <p>Didn't receive code? <a href="#">Request code</a></p>
       </form>

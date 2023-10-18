@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const path = require('path');
-const {generateToken, verifyToken, refreshToken} = require('../../controllers/authController')
+const {generateToken, verifyToken, refreshToken, generateOTP} = require('../../controllers/authController')
 const authorize = require('../../middleware/authorize.js')
 
 // Authentication pages
@@ -34,7 +34,18 @@ router.get('/reset_password',(req,res) => {
    res.render('reset_password',{layout:false})
 })
 
+router.get('/signout',(req,res) => {
+   res.clearCookie('ueisAuth')
+   req.session.destroy()
+
+   res.render('welcome',{layout:false})
+})
+
 // Authencation functions
+router.post('/OTP', generateOTP)
+
+router.post('/verifyOTP', verifyToken)
+
 router.get('/token', generateToken)
 
 router.post('/verifyToken', verifyToken)

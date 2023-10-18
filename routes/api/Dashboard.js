@@ -27,7 +27,7 @@ router.get("/user_profile",authorize,(req,res) => {
    const payload = {
       name: req.session.name,
       role: req.session.role,
-      ueis_id: req.session.id,
+      ueis_id: req.session.ueis_id,
       nid: req.session.nid,
       phone: req.session.phone,
       sex: req.session.sex,
@@ -44,7 +44,7 @@ router.get("/help",authorize,(req,res) => {
    const payload = {
       name: req.session.name,
       role: req.session.role,
-      ueis_id: req.session.id,
+      ueis_id: req.session.ueis_id,
       nid: req.session.nid,
       phone: req.session.phone,
       sex: req.session.sex,
@@ -60,7 +60,7 @@ router.get("/about",authorize,(req,res) => {
    const payload = {
       name: req.session.name,
       role: req.session.role,
-      ueis_id: req.session.id,
+      ueis_id: req.session.ueis_id,
       nid: req.session.nid,
       phone: req.session.phone,
       sex: req.session.sex,
@@ -76,7 +76,7 @@ router.get("/contact",authorize,(req,res) => {
    const payload = {
       name: req.session.name,
       role: req.session.role,
-      ueis_id: req.session.id,
+      ueis_id: req.session.ueis_id,
       nid: req.session.nid,
       phone: req.session.phone,
       sex: req.session.sex,
@@ -86,22 +86,6 @@ router.get("/contact",authorize,(req,res) => {
 
    let {name, role, ueis_id, nid, phone, sex, dob, status} = payload
    res.render('contact',{name,role,ueis_id});
-})
-
-router.get("/otp",authorize,(req,res) => {
-   const payload = {
-      name: req.session.name,
-      role: req.session.role,
-      ueis_id: req.session.id,
-      nid: req.session.nid,
-      phone: req.session.phone,
-      sex: req.session.sex,
-      dob: req.session.dob,
-      status: req.session.status
-   }
-
-   let {name, role, ueis_id, nid, phone, sex, dob, status} = payload
-   res.render('otp',{name,role,ueis_id,phone});
 })
 
 module.exports = router;
