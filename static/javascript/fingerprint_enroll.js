@@ -11,6 +11,7 @@ nid.addEventListener('focus',() => {
 //fingerprint button configurations
 
 const finger_btn = document.getElementById("finput");
+const fid = document.getElementById("fid").value
 
 finger_btn.addEventListener('click', async(e) => {
     const prompt = document.getElementById("flabel");
@@ -21,7 +22,6 @@ finger_btn.addEventListener('click', async(e) => {
 
     if(nid.value != "")
     {
-
         const port = new SerialPortHandler(
             { baudRate: 9600},
             () => console.log("Device connected"),
@@ -33,9 +33,9 @@ finger_btn.addEventListener('click', async(e) => {
         prompt.style.color = "#0d99ff";
 
         // avoids the writing before the arduino is up and running
-        sleep(2000).then(async () => {
+        sleep(1700).then(async () => {
             await port.write("3");
-            const id = '1'; // fingerprint id
+            const id = fid; // fingerprint id
             await port.write(id);
 
             message = await port.read();
@@ -53,24 +53,24 @@ finger_btn.addEventListener('click', async(e) => {
 
                 if(count == 2){
                     await port.close();
-
+                    console.log(message)
                     if(message == 1){
                         prompt.innerText = "enrolled";
                         prompt.style.color = "green";
                         finput.style.border = "0.05em green solid";
-                        ficon.setAttribute("src","../../static/images/icons8-fingerprint-accepted-48.png");
+                        ficon.setAttribute("src","/static/images/icons8-fingerprint-accepted-48.png");
                     }
                     else if(message == 2){
                         prompt.innerText = "Mismatch Finger";
                         prompt.style.color = "red";
                         finput.style.border = "0.05em red solid";
-                        ficon.setAttribute("src","../../static/images/icons8-fingerprint-error-48.png");
+                        ficon.setAttribute("src","/static/images/icons8-fingerprint-error-48.png");
                     }
                     else{
                         prompt.innerText = "Error"
                         prompt.style.color = "red";
                         finput.style.border = "0.05em red solid";
-                        ficon.setAttribute("src","../../static/images/icons8-fingerprint-error-48.png");
+                        ficon.setAttribute("src","/static/images/icons8-fingerprint-error-48.png");
                     }
                     break;
                 }

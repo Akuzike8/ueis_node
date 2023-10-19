@@ -68,7 +68,7 @@ router.post('/auth', async (req,res) => {
 
 })
 
-router.post('/write', authorize, async (req,res) => {
+router.post('/write', async (req,res) => {
     try {
         const nid = req.body.nid;
         const {findIdentity} = require("../../controllers/digital_identitiesController")

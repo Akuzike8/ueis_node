@@ -6,13 +6,12 @@ class authController
             const authToken = "1a714c3af30b8200bd822fa62008084f";
             const client = require('twilio')(accountSid, authToken);
 
-            client.messages
-            .create({
+            client.messages.create({
                 body: `UEIS: Your code ${code}. Don't share it.`,
                 to: `${phone}`,
                 from: '+12024172975',
             })
-
+            
             const otps = require('../models/otps')
 
             let otp = await otps.create({code,ueis_id,phone})
@@ -40,7 +39,7 @@ class authController
                 if(otp.status == 'valid'){
                     if(otp.code == code){
                        otp.update({status: "invalid"},{where:{id: otp.id}})
-                       
+
                        return {valid: true}
                     }
                 }

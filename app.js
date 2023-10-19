@@ -42,6 +42,8 @@ app.get('/',(req,res) => {
     res.render('welcome',{layout:false})
 })
 
+app.use("/Admin",require("./routes/api/Admin"));
+
 app.use("/Dashboard",require("./routes/api/Dashboard"));
 
 app.use("/Auth",require("./routes/api/Auth"));

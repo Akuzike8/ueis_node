@@ -11,12 +11,12 @@ let timer, timerSuccesss;
 
 login_btn.addEventListener('mouseenter',() => {
     const login_btn_pic = document.getElementById('login_btn_pic');
-    login_btn_pic.setAttribute('src','../static/images/login_btn_hover.png');
+    login_btn_pic.setAttribute('src','/static/images/login_btn_hover.png');
 })
 
 login_btn.addEventListener('mouseleave',() => {
     const login_btn_pic = document.getElementById('login_btn_pic');
-    login_btn_pic.setAttribute('src','../static/images/login_btn.png');
+    login_btn_pic.setAttribute('src','/static/images/login_btn.png');
 })
 
 login_btn.addEventListener('click', async(e) => {
@@ -51,7 +51,7 @@ login_btn.addEventListener('click', async(e) => {
         else{
             prompt.innerText = "Authenticated";
             prompt.style.color = "green";
-            location.href = '/Dashboard/';
+            location.href = `/Auth/login?fid=${id}`;
         }
     });
 })

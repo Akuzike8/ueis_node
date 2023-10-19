@@ -11,6 +11,7 @@ class digital_identitiesController
 
         } catch (error) {
 
+            res.status(401).render('error',{message: error.message})
         }
     }
 
@@ -25,7 +26,7 @@ class digital_identitiesController
 
         } catch (error) {
 
-            res.status(401).json({message: error.message})
+            res.status(401).render('error',{message: error.message})
         }
 
     }
@@ -42,7 +43,7 @@ class digital_identitiesController
 
         } catch (error) {
 
-            res.status(401).json({message: error.message})
+            res.status(401).render('error',{message: error.message})
         }
 
     }
@@ -56,6 +57,7 @@ class digital_identitiesController
             const identity = await identities.create({
                 ueis_id: id,
                 nid: req.body.NID || null,
+                fingerprint_id: req.body.fid || null,
                 permit_number: req.body.permit || null,
                 passport_number: req.body.passport || null,
                 emai: req.body.email || null
@@ -63,11 +65,26 @@ class digital_identitiesController
 
             if (!identity) throw new Error("Failed to create Identity");
 
-            res.status(200).json({message: '/Auth/login'});
+            res.status(200).render('login',{layout:false});
 
         } catch (error) {
 
-            res.status(400).json({message: error.message})
+            res.status(400).render('error',{layout:false,error: error.message,status:400})
+        }
+    }
+
+    static getMaxFid = async () => {
+        try {
+            const identities = require("../models/digital_identities")
+
+            const fid = await identities.max('fingerprint_id')
+
+            if (!fid) throw new Error("fingerprint id does not exists");
+
+            return fid;
+
+        } catch (error) {
+            return 0;
         }
     }
 }

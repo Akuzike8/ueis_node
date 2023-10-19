@@ -12,43 +12,31 @@ if(identity == 1)
 {
     homeLink.classList.add('active');
     userLink.classList.remove('active');
-    helpLink.classList.remove('active');
-    aboutLink.classList.remove('active');
-    contactLink.classList.remove('active');
+    thirdLink.classList.remove('active');
+    cardLink.classList.remove('active');
 }
 
 if(identity == 2)
 {
     userLink.classList.add('active');
     homeLink.classList.remove('active');
-    helpLink.classList.remove('active');
-    aboutLink.classList.remove('active');
-    contactLink.classList.remove('active');
+    thirdLink.classList.remove('active');
+    cardLink.classList.remove('active');
 }
 
 if(identity == 3)
 {
-    helpLink.classList.add('active');
+    thirdLink.classList.add('active');
     homeLink.classList.remove('active');
     userLink.classList.remove('active');
-    aboutLink.classList.remove('active');
-    contactLink.classList.remove('active');
+    cardLink.classList.remove('active');
 }
 
 if(identity == 4)
 {
-    aboutLink.classList.add('active');
+    cardLink.classList.add('active');
     homeLink.classList.remove('active');
     userLink.classList.remove('active');
-    helpLink.classList.remove('active');
-    contactLink.classList.remove('active');
-}
+    thirdLink.classList.remove('active');
 
-if(identity == 5)
-{
-    contactLink.classList.add('active');
-    homeLink.classList.remove('active');
-    userLink.classList.remove('active');
-    helpLink.classList.remove('active');
-    aboutLink.classList.remove('active');
 }

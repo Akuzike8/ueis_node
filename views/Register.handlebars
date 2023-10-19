@@ -39,8 +39,8 @@
                 </div>
                 <div class="row row_center">
                     <div class="input-group register-input">
-                        <input type="text" name="fid" id="fid" hidden>
-                        <button id="finput" class="input-group-text"><img id="ficon" src="/static/images/icons8-fingerprint-48.png" alt="fingerprint icon" srcset=""></button>
+                        <input type="text" name="fid" id="fid" value="{{fid}}" hidden>
+                        <button id="finput" type="button" class="input-group-text"><img id="ficon" src="/static/images/icons8-fingerprint-48.png" alt="fingerprint icon" srcset=""></button>
                         <label for="finput" id="flabel">Enroll fingerprint</label>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                     <button id="register-btn" class="btn btn-primary btn-lg">Register</button>
                 </div>
                 <div class="row row_center">
-                    <h6>Already have an account? <a href="login">Login</a></h6>
+                    <h6>Already have an account? <a href="/Auth/card">Login</a></h6>
                 </div>
             </div>
         </form>

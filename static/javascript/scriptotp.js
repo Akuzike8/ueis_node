@@ -4,9 +4,6 @@ const inputs = document.querySelectorAll('input'),
 // iterate over all inputs
 inputs.forEach((input, index1) => {
   input.addEventListener('keyup', (e) => {
-    // This code gets the current input element and stores it in the currentInput variable
-    // This code gets the next sibling element of the current input element and stores it in the nextInput variable
-    // This code gets the previous sibling element of the current input element and stores it in the prevInput variable
     const currentInput = input,
       nextInput = input.nextElementSibling,
       prevInput = input.previousElementSibling;
@@ -49,7 +46,19 @@ inputs.forEach((input, index1) => {
 //focus the first input which index is 0 on window load
 window.addEventListener("load", () => inputs[0].focus());
 
+const form = document.getElementById('form2')
+
 const btn = document.getElementById('otp_btn').addEventListener('click',(e) => {
-  const form = document.getElementById('form')
-  form.submit()
+  e.preventDefault()
+  let otp = ""
+
+  for(const input of inputs){
+    otp += input.value
+  }
+
+  let otpField = document.getElementById('otp')
+  otpField.value = otp
+  form.submit();
 })
+
+

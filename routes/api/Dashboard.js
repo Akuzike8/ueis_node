@@ -4,7 +4,7 @@ const path = require('path');
 const authorize = require('../../middleware/authorize.js')
 const {findUser, findIdentity} = require('../../controllers/digital_identitiesController.js')
 
-router.get("/",authorize,async (req,res) => {
+router.get("/",authorize, async (req,res) => {
 
    const payload = {
       name: req.session.name,
