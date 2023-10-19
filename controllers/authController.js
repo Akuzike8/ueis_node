@@ -3,7 +3,7 @@ class authController
    static generateOTP = async (phone,code,ueis_id) => {
         try {
             const accountSid = "AC32c85f39def9c445dc0d4acac663665d";
-            const authToken = "af6d12ada2434c7897930b181ce4a54c";
+            const authToken = "1a714c3af30b8200bd822fa62008084f";
             const client = require('twilio')(accountSid, authToken);
 
             client.messages
@@ -14,8 +14,6 @@ class authController
             })
 
             const otps = require('../models/otps')
-
-            console.log(ueis_id)
 
             let otp = await otps.create({code,ueis_id,phone})
 
@@ -41,8 +39,8 @@ class authController
             for(const otp of otps){
                 if(otp.status == 'valid'){
                     if(otp.code == code){
-                       console.log(otp)
-                       otps.update({status: "invalid"},{where:{id: otp.id}})
+                       otp.update({status: "invalid"},{where:{id: otp.id}})
+                       
                        return {valid: true}
                     }
                 }
@@ -50,7 +48,7 @@ class authController
 
         } catch (error) {
 
-           return {valid: error.message}
+           return {valid: false}
         }
    }
 

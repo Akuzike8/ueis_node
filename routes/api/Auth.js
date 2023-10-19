@@ -36,9 +36,12 @@ router.get('/reset_password',(req,res) => {
 
 router.get('/signout',(req,res) => {
    res.clearCookie('ueisAuth')
-   req.session.destroy()
+   req.session.destroy((err) => {
+      if (err) res.render('error',{layout:false})
 
-   res.render('welcome',{layout:false})
+      res.redirect('/')
+   })
+
 })
 
 // Authencation functions

@@ -21,14 +21,14 @@ router.get('/banks', async(req,res) => {
     let {name, role, ueis_id, nid, phone, sex, dob, status} = payload
 
     let state = await verifyOTP(token,ueis_id)
-    console.log(state)
 
     if(!state.valid) res.status(302).redirect('/service/otp/banks')
 
     res.render('banks',{name,phone,ueis_id})
  })
 
-router.get('/E-Payment',(req,res) => {
+router.get('/E-Payment', async(req,res) => {
+
     const payload = {
         name: req.session.name,
         role: req.session.role,
@@ -45,7 +45,9 @@ router.get('/E-Payment',(req,res) => {
     res.render('E-Payment',{name,phone,ueis_id})
 })
 
-router.get('/E-Health',(req,res) => {
+router.get('/E-Health', async (req,res) => {
+    let token = req.query.otp_num_1 + req.query.otp_num_2 + req.query.otp_num_3 + req.query.otp_num_4 + req.query.otp_num_5 + req.query.otp_num_6
+
     const payload = {
         name: req.session.name,
         role: req.session.role,
@@ -58,10 +60,17 @@ router.get('/E-Health',(req,res) => {
      }
 
     let {name, role, ueis_id, nid, phone, sex, dob, status} = payload
+
+    let state = await verifyOTP(token,ueis_id)
+
+    if(!state.valid) res.status(302).redirect('/service/otp/E-Health')
+
     res.render('E-Health',{name,phone,ueis_id})
  })
 
-router.get('/E-vote',(req,res) => {
+router.get('/E-vote', async (req,res) => {
+    let token = req.query.otp_num_1 + req.query.otp_num_2 + req.query.otp_num_3 + req.query.otp_num_4 + req.query.otp_num_5 + req.query.otp_num_6
+
     const payload = {
         name: req.session.name,
         role: req.session.role,
@@ -74,10 +83,17 @@ router.get('/E-vote',(req,res) => {
      }
 
     let {name, role, ueis_id, nid, phone, sex, dob, status} = payload
+
+    let state = await verifyOTP(token,ueis_id)
+
+    if(!state.valid) res.status(302).redirect('/service/otp/E-vote')
+
     res.render('E-vote',{name,phone,ueis_id})
 })
 
-router.get('/digital_signature',authorize,verifyOTP,(req,res) => {
+router.get('/digital_signature',verifyOTP, async(req,res) => {
+    let token = req.query.otp_num_1 + req.query.otp_num_2 + req.query.otp_num_3 + req.query.otp_num_4 + req.query.otp_num_5 + req.query.otp_num_6
+
     const payload = {
         name: req.session.name,
         role: req.session.role,
@@ -90,6 +106,10 @@ router.get('/digital_signature',authorize,verifyOTP,(req,res) => {
      }
 
     let {name, role, ueis_id, nid, phone, sex, dob, status} = payload
+
+    let state = await verifyOTP(token,ueis_id)
+
+    if(!state.valid) res.status(302).redirect('/service/otp/E-vote')
 
     res.render('digital_signature',{name,phone,ueis_id})
 })

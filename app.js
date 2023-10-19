@@ -29,7 +29,7 @@ app.use(sessions({
     name: 'ueisAuth',
     secret: 'randompassword',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
       httpOnly: true,
       maxAge: 3600000,

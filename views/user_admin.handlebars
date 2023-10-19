@@ -1,278 +1,274 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+<!-- Favicon -->
+<link rel="shortcut icon" href="/static/images/bg-digital-signature.png">
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="/static/images/bg-digital-signature.png">
+<!-- Boxicons CSS -->
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 
-  <!-- Boxicons CSS -->
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+<title>Admin Dashboard - Unified Electronic Identification System</title>
 
-  <title>Admin Dashboard - Unified Electronic Identification System</title>
+<link rel="stylesheet" href="/static/css/style2.css" />
+<link rel="stylesheet" href="/static/css/owl.carousel.css">
+<link rel="stylesheet" href="/static/css/card.css">
+<link rel="stylesheet" href="/static/css/admin_dash.css">
 
-  <link rel="stylesheet" href="/static/css/style2.css" />
-  <link rel="stylesheet" href="/static/css/owl.carousel.css">
-  <link rel="stylesheet" href="/static/css/card.css">
-  <link rel="stylesheet" href="/static/css/admin_dash.css">
-
-  <link rel="stylesheet" href="/static/css/datatables.min.css"> <!-- Data Tables -->
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="/static/css/datatables.min.css"> <!-- Data Tables -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
 
-  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
 
 
-  <!-- Bootstrap core CSS -->
-  <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
 
-  <!-- Custom styles -->
-  <link href="/static/css/dashboard.css" rel="stylesheet">
+<!-- Custom styles -->
+<link href="/static/css/dashboard.css" rel="stylesheet">
 
-        <div
-          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h5>UEIS Admin Dashboard</h5>
-          <div class="btn-toolbar mb-2 mb-md-0">
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">Samuel Loga</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Admin</button>
-            </div>
-          </div>
-        </div>
+<script defer src="/static/javascript/links.js"></script>
 
-        <div id="home">
-          <div class="row my-4">
-            <div class="d-flex align-items-center justify-content-between">
-              <p class="lead mb-0">Statistics</p>
-              <div class="me-3 nav-item text-nowrap d-xl-none d-lg-none d-md-none d-block">
-                <i class="fa fa-user" style="font-size: 40px;"></i>
-              </div>
-            </div>
-            <div class="col-md-4 my-3">
-              <div class="card-counter primary">
-                <i class="fa fa-sitemap"></i>
-                <span class="count-numbers">5</span>
-                <span class="count-name">Thirdparties</span>
-              </div>
-            </div>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h5>UEIS Admin Dashboard</h5>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group">
+      <button type="button" class="btn btn-sm btn-outline-secondary">Samuel Loga</button>
+      <button type="button" class="btn btn-sm btn-outline-secondary">Admin</button>
+    </div>
+  </div>
+</div>
 
-            <div class="col-md-4 my-3">
-              <div class="card-counter success">
-                <i class="fa fa-ticket"></i>
-                <span class="count-numbers">13</span>
-                <span class="count-name">Services</span>
-              </div>
-            </div>
+<span id="identity" hidden>1</span>
 
-            <div class="col-md-4 my-3">
-              <div class="card-counter info">
-                <i class="fa fa-users"></i>
-                <span class="count-numbers">35</span>
-                <span class="count-name">Users</span>
-              </div>
-            </div>
-          </div>
+<div id="home">
+  <div class="row my-4">
+    <div class="d-flex align-items-center justify-content-between">
+      <p class="lead mb-0">Statistics</p>
+      <div class="me-3 nav-item text-nowrap d-xl-none d-lg-none d-md-none d-block">
+        <i class="fa fa-user" style="font-size: 40px;"></i>
+      </div>
+    </div>
+    <div class="col-md-4 my-3">
+      <div class="card-counter primary">
+        <i class="fa fa-sitemap"></i>
+        <span class="count-numbers">5</span>
+        <span class="count-name">Thirdparties</span>
+      </div>
+    </div>
 
+    <div class="col-md-4 my-3">
+      <div class="card-counter success">
+        <i class="fa fa-ticket"></i>
+        <span class="count-numbers">13</span>
+        <span class="count-name">Services</span>
+      </div>
+    </div>
 
-          <p class="lead mt-4">Quick Actions</p>
-
-          <div class="service-bag row">
-            <div class="col-md-3 col-xs-6 col-sm-6" data-bs-toggle="modal" data-bs-target="#third_party_modal">
-                <div class="services color-1">
-                  <i class="fa fa-plus-circle"></i>
-                  <span class="fw-bold text-primary quick-action-text">Add Thirdparty</span>
-                </div>
-            </div>
-            <div class="col-md-3 col-xs-6 col-sm-6">
-                <div class="services color-2">
-                  <i class="fa fa-location-arrow"></i>
-                  <span class="fw-bold text-primary quick-action-text">Third-party Stats</span>
-                </div>
-            </div>
-            <div class="col-md-3 col-xs-6 col-sm-6" data-bs-toggle="modal" data-bs-target="#add_card_modal">
-                <div class="services color-3">
-                  <i class="fa fa-id-card-o"></i>
-                  <span class="fw-bold text-primary quick-action-text">Add Card</span>
-                </div>
-            </div>
-            <div class="col-md-3 col-xs-6 col-sm-6">
-                <div class="services color-4">
-                  <i class="fa fa-info"></i>
-                  <span class="fw-bold text-primary quick-action-text">My info</span>
-                </div>
-            </div>
-          </div>
-
-          <p class="lead mt-4">Services accessible with UEIS</p>
-
-          <!-- Display all services in a table -->
-          <div class="table-responsive">
-            <table class="table table-striped table-sm display nowrap" id="services_table" style="width:100%">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Service ID</th>
-                  <th>Thirdparty ID</th>
-                  <th>Service Name</th>
-                  <th>Date Added</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody> <!-- Table contents to be filled from a database --> </tbody>
-            </table>
-          </div>
-        </div>
-
-
-        <!-- Manage Users -->
-        <div id="manage_users" style="display: none;">
-          <h5>Manage Users</h5>
-          <div class="table-responsive">
-            <table class="table table-striped table-sm display nowrap" id="users_table" style="width:100%">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>National ID</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-                  <th>Date Added</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody> <!-- Table contents to be filled from a database --> </tbody>
-            </table>
-          </div>
-        </div>
-
-
-        <!-- Third-Party Table -->
-        <div id="thirdparty" style="display: none;">
-          <h5>Manage Thirdparty Organizations</h5>
-          <div class="table-responsive">
-            <table class="table table-striped table-sm display nowrap" id="thirdparties_table" style="width:100%">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Location</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-                  <th>Date Added</th>
-                </tr>
-              </thead>
-              <tbody> <!-- Table contents to be filled from a database --> </tbody>
-            </table>
-          </div>
-        </div>
-
-
-
-        <!-- Modals used under Admin Dashboard  -->
-        <!-- Card Reg. Modal -->
-        <div class="modal fade" id="add_card_modal" tabindex="-1" aria-labelledby="cardModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="cardModalLabel" class="">Card Registration</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-
-              <div class="modal-body">
-                <!-- Card Reg. Form -->
-                <form>
-                  <label class="form-label" for="card_id">National ID Number</label>
-                  <input class="form-input" type="text" id="card_id" name="card_id" placeholder="User's ID Number"
-                    required>
-                  <label class="form-label" for="card_date_of_expiry">Expiry Date:</label>
-                  <input class="form-input" type="date" id="card_date_of_expiry" name="card_date_of_expiry" required>
-                </form>
-              </div>
-
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Add Card</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <!-- Thirdparty Reg. Modal -->
-        <div class="modal fade" id="third_party_modal" tabindex="-1" aria-labelledby="tpModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="tpModalLabel">Thirdparty Registration</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <!-- Thirdparty Reg. Form -->
-                <form>
-                  <label class="form-label" for="tp_name">Name</label>
-                  <input type="text" class="form-input" id="tp_name" placeholder="Company X LTD" required>
-
-                  <label class="form-label" for="tp_location">Location</label>
-                  <input type="text" class="form-input" id="tp_location" placeholder="Lilongwe" required>
-
-                  <label class="form-label" for="tp_email">Email</label>
-                  <input type="text" class="form-input" id="tp_email" placeholder="company@example.com" required>
-
-                  <label class="form-label" for="tp_telephone">Telephone</label>
-                  <input type="tel" class="form-input" id="tp_telephone" placeholder="+265997222157" required>
-                </form>
-              </div>
-
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Add User</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
+    <div class="col-md-4 my-3">
+      <div class="card-counter info">
+        <i class="fa fa-users"></i>
+        <span class="count-numbers">35</span>
+        <span class="count-name">Users</span>
+      </div>
     </div>
   </div>
 
 
+  <p class="lead mt-4">Quick Actions</p>
 
-  <!-- Scripts for DataTables -->
-  <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
-  <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-  <script defer>
-    $().DataTable();
-    new DataTable('#services_table');
-    new DataTable('#users_table');
-    new DataTable('#thirdparties_table');
-  </script>
+  <div class="service-bag row">
+    <div class="col-md-3 col-xs-6 col-sm-6" data-bs-toggle="modal" data-bs-target="#third_party_modal">
+      <div class="services color-1">
+        <i class="fa fa-plus-circle"></i>
+        <span class="fw-bold text-primary quick-action-text">Add Thirdparty</span>
+      </div>
+    </div>
+    <div class="col-md-3 col-xs-6 col-sm-6">
+      <div class="services color-2">
+        <i class="fa fa-location-arrow"></i>
+        <span class="fw-bold text-primary quick-action-text">Third-party Stats</span>
+      </div>
+    </div>
+    <div class="col-md-3 col-xs-6 col-sm-6" data-bs-toggle="modal" data-bs-target="#add_card_modal">
+      <div class="services color-3">
+        <i class="fa fa-id-card-o"></i>
+        <span class="fw-bold text-primary quick-action-text">Add Card</span>
+      </div>
+    </div>
+    <div class="col-md-3 col-xs-6 col-sm-6">
+      <div class="services color-4">
+        <i class="fa fa-info"></i>
+        <span class="fw-bold text-primary quick-action-text">My info</span>
+      </div>
+    </div>
+  </div>
 
-  <script defer src="/static/javascript/bootstrap.bundle.min.js"></script>
+  <p class="lead mt-4">Services accessible with UEIS</p>
 
-  <script defer src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
-    integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
-    crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
-    integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
-    crossorigin="anonymous"></script>
-  <script defer src="/static/javascript/dashboard.js"></script>
+  <!-- Display all services in a table -->
+  <div class="table-responsive">
+    <table class="table table-striped table-sm display nowrap" id="services_table" style="width:100%">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Service ID</th>
+          <th>Thirdparty ID</th>
+          <th>Service Name</th>
+          <th>Date Added</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody> <!-- Table contents to be filled from a database --> </tbody>
+    </table>
+  </div>
+</div>
 
-  <!-- Custom JS -->
-  <script defer src="/static/javascript/function.js"></script>
-</body>
 
-</html>
+<!-- Manage Users -->
+<div id="manage_users" style="display: none;">
+  <h5>Manage Users</h5>
+  <div class="table-responsive">
+    <table class="table table-striped table-sm display nowrap" id="users_table" style="width:100%">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>National ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Date Added</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody> <!-- Table contents to be filled from a database --> </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!-- Third-Party Table -->
+<div id="thirdparty" style="display: none;">
+  <h5>Manage Thirdparty Organizations</h5>
+  <div class="table-responsive">
+    <table class="table table-striped table-sm display nowrap" id="thirdparties_table" style="width:100%">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Location</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Date Added</th>
+        </tr>
+      </thead>
+      <tbody> <!-- Table contents to be filled from a database --> </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+<!-- Modals used under Admin Dashboard  -->
+<!-- Card Reg. Modal -->
+<div class="modal fade" id="add_card_modal" tabindex="-1" aria-labelledby="cardModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cardModalLabel" class="">Card Registration</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Card Reg. Form -->
+        <form>
+          <label class="form-label" for="card_id">National ID Number</label>
+          <input class="form-input" type="text" id="card_id" name="card_id" placeholder="User's ID Number" required>
+          <label class="form-label" for="card_date_of_expiry">Expiry Date:</label>
+          <input class="form-input" type="date" id="card_date_of_expiry" name="card_date_of_expiry" required>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Add Card</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Thirdparty Reg. Modal -->
+<div class="modal fade" id="third_party_modal" tabindex="-1" aria-labelledby="tpModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tpModalLabel">Thirdparty Registration</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Thirdparty Reg. Form -->
+        <form>
+          <label class="form-label" for="tp_name">Name</label>
+          <input type="text" class="form-input" id="tp_name" placeholder="Company X LTD" required>
+
+          <label class="form-label" for="tp_location">Location</label>
+          <input type="text" class="form-input" id="tp_location" placeholder="Lilongwe" required>
+
+          <label class="form-label" for="tp_email">Email</label>
+          <input type="text" class="form-input" id="tp_email" placeholder="company@example.com" required>
+
+          <label class="form-label" for="tp_telephone">Telephone</label>
+          <input type="tel" class="form-input" id="tp_telephone" placeholder="+265997222157" required>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Add User</button>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+</div>
+</div>
+
+
+
+<!-- Scripts for DataTables -->
+<script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script defer>
+  $().DataTable();
+  new DataTable('#services_table');
+  new DataTable('#users_table');
+  new DataTable('#thirdparties_table');
+</script>
+
+<script defer src="/static/javascript/bootstrap.bundle.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+  integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+  integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+<script defer src="/static/javascript/dashboard.js"></script>
+
+<!-- Custom JS -->
+<script defer src="/static/javascript/function.js"></script>
+
