@@ -54,7 +54,7 @@
     <div class="col-md-3 col-xs-6 col-sm-6" data-bs-toggle="modal" data-bs-target="#third_party_modal">
       <div class="services color-1">
         <i class="fa fa-plus-circle"></i>
-        <span class="fw-bold text-primary quick-action-text">Add Thirdparty</span>
+        <span class="fw-bold text-primary quick-action-text">Add Third-party</span>
       </div>
     </div>
     <div class="col-md-3 col-xs-6 col-sm-6">
@@ -69,9 +69,9 @@
         <span class="fw-bold text-primary quick-action-text">Add Card</span>
       </div>
     </div>
-    <div class="col-md-3 col-xs-6 col-sm-6">
+    <div class="col-md-3 col-xs-6 col-sm-6" data-bs-toggle="modal" data-bs-target="#add_service_modal">
       <div class="services color-4">
-        <i class="fa fa-info"></i>
+        <i class="fa fa-ticket" style="font-size: 40px;"></i>
         <span class="fw-bold text-primary quick-action-text">Add Service</span>
       </div>
     </div>
@@ -195,6 +195,9 @@
 
           <label class="form-label" for="tp_telephone">Telephone</label>
           <input type="tel" name="tp_telephone" class="form-input" id="tp_telephone" placeholder="+265997222157" required>
+
+          <label class="form-label" for="tp_description">Description</label>
+          <input type="text" name="tp_description" multiple class="form-input" id="tp_description" placeholder="what the company offers" required>
         </form>
       </div>
 
@@ -220,6 +223,12 @@
         <form>
           <label class="form-label" for="service_name">Name</label>
           <input class="form-input" type="text" id="service_name" name="service_name" placeholder="service name" required>
+
+          <label class="form-label" for="service_name">Third-Party Id</label>
+          <input class="form-input" type="text" id="third-party_id" name="third-party_id" placeholder="e.g 1" required>
+
+          <label class="form-label" for="service_name">Description</label>
+          <input class="form-input" type="text" id="service_description" name="third-party_id" placeholder="e.g 1" required>
 
           <label class="form-label" for="service_name">Third-Party Id</label>
           <input class="form-input" type="text" id="third-party_id" name="third-party_id" placeholder="e.g 1" required>

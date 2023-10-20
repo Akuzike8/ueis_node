@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const cardcontroller = require('../../controllers/cardController');
-const authorize = require("../../middleware/authorize");
+const [authorize,admin_authorize] = require("../../middleware/authorize");
 const {findUser, findIdentity} = require('../../controllers/digital_identitiesController.js')
 
 router.post('/auth', async (req,res) => {
@@ -41,7 +41,7 @@ router.post('/auth', async (req,res) => {
 
                 const user = await users.findOne({where:{nid: identity.nid}})
 
-                let {role, status, ueis_id} = identity
+                let {role, status, ueis_id, fingerprint_id} = identity
 
                 let {firstname, othername, surname,nid, phone, sex, dob} = user
 
@@ -53,7 +53,7 @@ router.post('/auth', async (req,res) => {
                 req.session.sex = `${sex}`
                 req.session.dob = `${dob}`
                 req.session.status = `${status}`
-
+                req.session.fid = `${fingerprint_id}`
                 return res.status(201).redirect('/Auth/fingerprint')
             })
 
@@ -68,7 +68,7 @@ router.post('/auth', async (req,res) => {
 
 })
 
-router.post('/write', async (req,res) => {
+router.post('/write', admin_authorize,async (req,res) => {
     try {
         const nid = req.body.nid;
         const {findIdentity} = require("../../controllers/digital_identitiesController")
@@ -86,7 +86,7 @@ router.post('/write', async (req,res) => {
 
 })
 
-router.post('/register', async (req,res) => {
+router.post('/register',admin_authorize, async (req,res) => {
     try {
        const payload = req.body.payload
        const [cid,ueis_id] = payload.split(":")

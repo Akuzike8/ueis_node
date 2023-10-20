@@ -3,7 +3,7 @@ const router = express.Router();
 const path = require('path');
 const {generateToken, verifyToken, refreshToken, generateOTP} = require('../../controllers/authController')
 const {getMaxFid} = require("../../controllers/digital_identitiesController")
-const authorize = require('../../middleware/authorize.js')
+const [authorize,admin_authorize] = require('../../middleware/authorize.js')
 
 // Authentication pages
 
@@ -28,13 +28,13 @@ router.get('/fingerprint_enroll',(req,res) => {
    res.render('fingerprint_enroll',{layout:false})
 })
 
-router.get('/login',(req,res) => {
+router.get('/login',authorize,(req,res) => {
    try {
       let db_fid = req.session.fid
       let role = req.session.role
       let fid = req.query.fid
 
-      if (db_fid != fid) new Error("Fingerprint Incorrect")
+      if (db_fid != fid) throw new Error("Could not authenticate user!")
 
       if(role == 'user') res.redirect('/Dashboard/')
 
@@ -58,7 +58,7 @@ router.get('/reset_password',(req,res) => {
 router.get('/signout',(req,res) => {
    res.clearCookie('ueisAuth')
    req.session.destroy((err) => {
-      if (err) res.render('error',{layout:false})
+      if (err) res.render('error',{layout:false,status:400,error:err.message})
 
       res.redirect('/')
    })

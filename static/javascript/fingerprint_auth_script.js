@@ -49,8 +49,6 @@ login_btn.addEventListener('click', async(e) => {
             prompt.style.color = "red";
         }
         else{
-            prompt.innerText = "Authenticated";
-            prompt.style.color = "green";
             location.href = `/Auth/login?fid=${id}`;
         }
     });

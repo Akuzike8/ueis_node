@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const path = require('path');
-const authorize = require('../../middleware/authorize.js')
+const [authorize,admin_authorize] = require('../../middleware/authorize.js')
 const {createUser,findUser, createIdentity} = require("../../controllers/digital_identitiesController.js");
 
 //getting user

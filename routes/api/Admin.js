@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const path = require('path');
-const authorize = require('../../middleware/authorize.js')
+const [authorize,admin_authorize] = require('../../middleware/authorize.js')
 
-router.get("/",authorize,(req,res) => {
+router.get("/",admin_authorize,(req,res) => {
    const payload = {
       name: req.session.name,
       role: req.session.role,
@@ -20,11 +20,11 @@ router.get("/",authorize,(req,res) => {
    res.render('user_admin',{layout: 'admin_layout',name,role});
 })
 
-router.get('/card_reg',(req,res) => {
+router.get('/card_reg',admin_authorize,(req,res) => {
    res.render('card_reg',{layout:false})
 })
 
-router.get('/thirdparty',(req,res) => {
+router.get('/thirdparty',admin_authorize,(req,res) => {
    const payload = {
       name: req.session.name,
       role: req.session.role,
@@ -41,7 +41,7 @@ router.get('/thirdparty',(req,res) => {
    res.render('thirdparty',{layout:'admin_layout',name,role,ueis_id})
 })
 
-router.get('/users',(req,res) => {
+router.get('/users',admin_authorize,(req,res) => {
    const payload = {
       name: req.session.name,
       role: req.session.role,
@@ -58,7 +58,7 @@ router.get('/users',(req,res) => {
    res.render('users',{layout:'admin_layout',name,role,ueis_id})
 })
 
-router.get('/card_info',(req,res) => {
+router.get('/card_info',admin_authorize,(req,res) => {
    const payload = {
       name: req.session.name,
       role: req.session.role,

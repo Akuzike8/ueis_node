@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const path = require('path');
-const authorize = require('../../middleware/authorize.js');
+const [authorize,admin_authorize] = require('../../middleware/authorize.js');
 const {verifyOTP} = require('../../controllers/authController.js')
 
-router.post('/banks', async(req,res) => {
+router.post('/banks',authorize, async(req,res) => {
     let token = req.body.otp
 
     const payload = {
@@ -27,7 +27,7 @@ router.post('/banks', async(req,res) => {
     res.render('banks',{name,phone,ueis_id})
  })
 
-router.post('/E-Payment', async(req,res) => {
+router.post('/E-Payment',authorize, async(req,res) => {
     let token = req.body.otp
 
     const payload = {
@@ -50,7 +50,7 @@ router.post('/E-Payment', async(req,res) => {
     res.render('E-Payment',{name,phone,ueis_id})
 })
 
-router.post('/E-Health', async (req,res) => {
+router.post('/E-Health',authorize, async (req,res) => {
     let token = req.body.otp
 
     const payload = {
@@ -73,7 +73,7 @@ router.post('/E-Health', async (req,res) => {
     res.render('E-Health',{name,phone,ueis_id})
  })
 
-router.post('/E-vote', async (req,res) => {
+router.post('/E-vote',authorize, async (req,res) => {
     let token = req.body.otp
 
     const payload = {
@@ -96,7 +96,7 @@ router.post('/E-vote', async (req,res) => {
     res.render('E-vote',{name,phone,ueis_id})
 })
 
-router.get('/digital_signature',verifyOTP, async(req,res) => {
+router.get('/digital_signature',authorize, async(req,res) => {
     let token = req.body.otp
 
     const payload = {
@@ -119,7 +119,7 @@ router.get('/digital_signature',verifyOTP, async(req,res) => {
     res.render('digital_signature',{name,phone,ueis_id})
 })
 
-router.get('/otp/:service', (req,res) => {
+router.get('/otp/:service',authorize, (req,res) => {
     let service = req.params.service
     let {generateOTP} = require('../../controllers/authController.js')
     let {generateCode} = require('../../controllers/codesController.js')
