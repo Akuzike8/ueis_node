@@ -19,6 +19,22 @@ class cardController
         }
     }
 
+    static getAllCards = async () => {
+        try {
+            const cards = require("../models/cards")
+
+            const card = await cards.findAll()
+
+            if (!card) throw new Error("card does not exists");
+
+            return card
+
+        } catch (error) {
+
+            return {error: error.message}
+        }
+    }
+
     static retrive = async (ueis_id) => {
         try {
 

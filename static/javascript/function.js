@@ -1,21 +1,3 @@
-/** Owl Carousel JS - JQuery **/
-var owl = $('.owl-carousel');
-owl.owlCarousel({
-    items: 1,
-    lazyLoad: true,
-    loop: true,
-    margin:10,
-    autoplay: true,
-    autoplayTimeout: 10000,
-    autoplayHoverPause: true
-});
-$('.play').on('click',function(){
-    owl.trigger('play.owl.autoplay',[4000])
-})
-$('.stop').on('click',function(){
-    owl.trigger('stop.owl.autoplay')
-});
-
 
 // About UEIS - Read More Button Functionality
 const readMoreButton = document.querySelector('.read-more-button');

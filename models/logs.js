@@ -1,9 +1,15 @@
+const Sequelize = require('sequelize')
+const db = require('../controllers/logController')
+
 const logs = {
     logs: {
-        ueis_id,
-        action,
-        description,
-        logged_on,
+        user_id: {type: Sequelize.INTEGER},
+
+        action: {type: Sequelize.STRING},
+
+        description: {type: Sequelize.STRING},
+        
+        logged_on: {type: Sequelize.DATE},
     }
 }
 

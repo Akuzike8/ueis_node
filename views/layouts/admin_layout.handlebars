@@ -52,7 +52,6 @@
   <script defer src="/static/javascript/dashboard.js"></script>
 
   <!-- Custom JS -->
-  <script defer src="/static/javascript/function.js"></script>
 
   <script defer src="/static/javascript/links_admin.js"></script>
 </head>
@@ -137,9 +136,53 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script>
       $().DataTable();
-      new DataTable('#services_table');
-      new DataTable('#users_table');
-      new DataTable('#thirdparties_table');
+      new DataTable('#services_table',{
+        columns:[
+          {title:'ID'},
+          {title:'Thirdparty'},
+          {title:'Name'},
+          {title:'Category'},
+          {title:'Registered on'},
+          {title:'Status'},
+          {title:'Action'},
+        ],
+      });
+
+      new DataTable('#cards_table',{
+        columns:[
+          {title:'card ID'},
+          {title:'UEIS ID'},
+          {title:'Registered on'},
+          {title:'Status'},
+          {title:'Action'},
+        ],
+      });
+
+      new DataTable('#users_table',{
+        columns:[
+          {title:'National ID'},
+          {title:'Name'},
+          {title:'Email'},
+          {title:'Phone'},
+          {title:'Registered on'},
+          {title:'Status'},
+          {title:'Action'},
+        ],
+      });
+
+      new DataTable('#thirdparties_table',{
+        columns:[
+          {title:'ID'},
+          {title:'Name'},
+          {title:'Description'},
+          {title:'Location'},
+          {title:'Email'},
+          {title:'Phone'},
+          {title:'Registered on'},
+          {title:'Status'},
+          {title:'Action'},
+        ],
+      });
   </script>
 </body>
 

@@ -1,5 +1,6 @@
 <title>Manage Cards - Unified Electronic Identification System</title>
 
+<span id="identity" hidden>4</span>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h5>Manage ID Cards</h5>
   <div class="btn-toolbar mb-2 mb-md-0">
@@ -9,3 +10,23 @@
     </div>
   </div>
 </div>
+
+<!-- Manage cards -->
+<div id="manage_cards">
+  <div class="table-responsive">
+    <table class="table table-striped table-sm display nowrap" id="cards_table" style="width:100%">
+      <tbody>
+        {{#each cards}}
+        <tr>
+          <td>{{dataValues.card_id}}</td>
+          <td>{{dataValues.ueis_id}}</td>
+          <td>{{dataValues.created_at}}</td>
+          <td>{{dataValues.status}}</td>
+          <td>Action</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
+

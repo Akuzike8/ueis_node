@@ -17,12 +17,14 @@ const services = db.define('services', {
 
     category:{
         type: Sequelize.ENUM(['E-Banking','E-Voting','E-Payment','E-Health','Digital-Signature']),
-        defaultValue: 'E-Banking'
+        defaultValue: 'E-Banking',
+        allowNull: false
     },
 
     status:{
         type: Sequelize.ENUM(['active','inactive','blocked']),
-        defaultValue: 'active'
+        defaultValue: 'active',
+        allowNull: false
     },
 
 })

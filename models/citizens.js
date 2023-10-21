@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const db = require('../controllers/nrbcontroller')
+const db = require('../controllers/nrbController')
 
 const citizens = db.define('citizens', {
     nid: {

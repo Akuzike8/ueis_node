@@ -16,7 +16,7 @@ const digital_identities = db.define('digital_identities',{
     email:{type: Sequelize.STRING,allowNull: true},
 
     fingerprint_id:{type: Sequelize.INTEGER,allowNull: true},
-    
+
     role:{
         type: Sequelize.ENUM(['user','admin']),
         allowNull: false,

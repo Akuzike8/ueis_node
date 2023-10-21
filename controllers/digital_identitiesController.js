@@ -1,8 +1,11 @@
+const { Sequelize } = require("sequelize");
+
 class digital_identitiesController
 {
     static authenticate = (id) => {
         try {
             const identities = require("../models/digital_identities")
+
             const identity = identities.findOne({where: {id}})
 
             if(!identity) throw new Error("Identity does not exist")
@@ -18,6 +21,7 @@ class digital_identitiesController
     static findIdentity = async (nid) => {
         try {
             const identities = require("../models/digital_identities")
+
             const identity = await identities.findOne({where:{nid}})
 
             if (!identity) throw new Error("Identity does not exists");
@@ -27,6 +31,49 @@ class digital_identitiesController
         } catch (error) {
 
             res.status(401).render('error',{message: error.message})
+        }
+
+    }
+
+    static countIdentities = () => {
+        try {
+            const identities = require("../models/digital_identities")
+
+            const identity = identities.count()
+
+            if (!identity) throw new Error("Identity does not exists");
+
+            return identity;
+
+        } catch (error) {
+
+            res.status(401).render('error',{message: error.message})
+        }
+
+    }
+
+    static getAllIdentities = () => {
+        try {
+            const identities = require("../models/digital_identities")
+            const citizens = require("../models/citizens")
+
+            identities.hasOne(citizens)
+
+            const identity = identities.findAll({
+                include:[{
+                    model: citizens,
+                    required: true,
+                }]
+            })
+
+            if (!identity) throw new Error("Identity does not exists");
+
+            return identity;
+
+        } catch (error) {
+
+            console.log(error.message)
+           return {message: error.message}
         }
 
     }
@@ -51,7 +98,9 @@ class digital_identitiesController
     static createIdentity = async (req,res) => {
         try {
             const identities = require("../models/digital_identities")
+
             const { v4: uuidv4 } = require('uuid');
+
             const id = uuidv4()
 
             const identity = await identities.create({
@@ -84,6 +133,7 @@ class digital_identitiesController
             return fid;
 
         } catch (error) {
+
             return 0;
         }
     }
