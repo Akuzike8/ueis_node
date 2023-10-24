@@ -2,7 +2,12 @@ const express = require("express");
 const router = express.Router();
 const path = require('path');
 const [authorize,admin_authorize] = require('../../middleware/authorize.js');
-const {verifyOTP} = require('../../controllers/authController.js')
+const {verifyOTP} = require('../../controllers/authController.js');
+const { createService } = require("../../controllers/serviceController.js");
+
+router.post('/add',admin_authorize, createService)
+
+router.put('/update',admin_authorize)
 
 router.post('/banks',authorize, async(req,res) => {
     let token = req.body.otp

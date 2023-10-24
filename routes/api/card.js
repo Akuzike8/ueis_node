@@ -26,7 +26,7 @@ router.post('/auth', async (req,res) => {
             var [ueis_id,error] = input.split("T")
             let uid = ueis_id
             const card_ueis = await cardcontroller.retrive(ueis_id);
-
+            
             if(id != card_ueis) throw new Error('Fake card');
 
             jwt.sign(ueis_id,privatekey,{algorithm:'RS256',allowInsecureKeySizes:true}, async (err,token) => {

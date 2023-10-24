@@ -20,13 +20,19 @@
       <tbody>
         {{#each users}}
           <tr>
-            <td>{{dataValues.nid}}</td>
-            <td>{{dataValues.firstname}} {{dataValues.othername}} {{dataValues.surname}}</td>
-            <td>{{dataValues.email}}</td>
-            <td>{{dataValues.phone}}</td>
-            <td>{{dataValues.created_at}}</td>
-            <td>{{dataValues.status}}</td>
-            <td>action</td>
+            <td>{{nid}}</td>
+            <td>{{name}}</td>
+            <td>{{email}}</td>
+            <td>{{phone}}</td>
+            <td>{{created_at}}</td>
+            <td>{{status}}</td>
+            <td>
+              {{#equals status 'active'}}
+                <button class="actionBtn" id="{{nid}}">Block</button>
+              {{else}}
+                <button class="actionStatus" id="{{nid}}">Activate</button>
+              {{/equals}}
+            </td>
           </tr>
         {{/each}}
       </tbody>

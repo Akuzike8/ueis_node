@@ -1,12 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const path = require('path');
-const {engine} = require('express-handlebars')
+const {engine,create} = require('express-handlebars')
 const sessions = require('express-session')
 const cookieParser = require('cookie-parser')
 const hostname = "127.0.0.1"
 const PORT = process.env.PORT || 3000;
-
+const hbs = create({})
 const app = express();
 
 //middleware
@@ -20,6 +20,10 @@ app.use(express.urlencoded({extended:false}));
 app.engine('handlebars', engine({ defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.set('views', './views');
+
+hbs.handlebars.registerHelper('equals',(arg1,arg2,options) =>{
+  return (arg1 == arg2) ? options.fn(this) : options.inverse(this)
+})
 
 app.use(cors());
 

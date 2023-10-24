@@ -16,9 +16,33 @@
     padding: 20px;
   }
 
-  /*.card {
-    width: 200px;
-  }*/
+  .actionBtn {
+    border: 1px solid red;
+    color: white;
+    border-radius: 0.3em;
+    background-color: red;
+    padding: 0 1em;
+    margin-right: 0.1em;
+  }
+
+  .actionBtn:hover{
+    color: red;
+    background-color: white;
+  }
+
+  .actionStatus{
+    border: 1px solid #0d99ff;
+    color: white;
+    border-radius: 0.3em;
+    background-color: #0d99ff;
+    padding: 0 1em;
+    margin-right: 0.1em;
+  }
+
+  .actionStatus:hover{
+    color: #0d99ff;
+    background-color: white;
+  }
 
   .profile-container {
     display: flex;

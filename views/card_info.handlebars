@@ -22,7 +22,14 @@
           <td>{{dataValues.ueis_id}}</td>
           <td>{{dataValues.created_at}}</td>
           <td>{{dataValues.status}}</td>
-          <td>Action</td>
+          <td>
+            {{#equals dataValues.status 'active'}}
+              <button class="actionBtn" id="{{dataValues.card_id}}">Block</button>
+            {{/equals}}
+            {{#equals dataValues.status 'blocked'}}
+              <button class="actionStatus" id="{{dataValues.card_id}}">Activate</button>
+            {{/equals}}
+          </td>
         </tr>
         {{/each}}
       </tbody>

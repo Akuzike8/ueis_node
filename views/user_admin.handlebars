@@ -32,7 +32,7 @@
           0
         {{/if}}
         </span>
-        <span class="count-name">Thirdparties</span>
+        <span class="count-name">Third Parties</span>
       </div>
     </div>
 
@@ -99,13 +99,20 @@
         <tbody>
           {{#each services}}
             <tr>
-              <td>{{dataValues.id}}</td>
-              <td>{{dataValues.third_party_id}}</td>
-              <td>{{dataValues.name}}</td>
-              <td>{{dataValues.category}}</td>
-              <td>{{dataValues.registered_on}}</td>
-              <td>{{dataValues.status}}</td>
-              <td>Action</td>
+              <td>{{id}}</td>
+              <td>{{third_party_id}}</td>
+              <td>{{name}}</td>
+              <td>{{category}}</td>
+              <td>{{registered_on}}</td>
+              <td>{{status}}</td>
+              <td>
+                {{#equals status 'active'}}
+                  <button class="actionBtn" id="{{id}}">Block</button>
+                {{/equals}}
+                {{#equals status 'blocked'}}
+                  <button class="actionStatus" id="{{id}}">Activate</button>
+                {{/equals}}
+              </td>
             </tr>
           {{/each}}
         </tbody>
@@ -150,7 +157,7 @@
       </div>
       <div class="modal-body">
         <!-- Thirdparty Reg. Form -->
-        <form>
+        <form method="post" action="/Third-party/add">
           <label class="form-label" for="tp_name">Company Id</label>
           <input type="text" name="tp_id" class="form-input" id="tp_id" placeholder="Gc-342-Mw-Da" required>
 
@@ -173,7 +180,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Add User</button>
+        <button type="button" class="btn btn-primary">Add Third Party</button>
       </div>
     </div>
   </div>

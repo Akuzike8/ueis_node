@@ -26,7 +26,14 @@
           <td>{{dataValues.phone}}</td>
           <td>{{dataValues.created_at}}</td>
           <td>{{dataValues.status}}</td>
-          <td>Action</td>
+          <td>
+            {{#equals dataValues.status 'active'}}
+                <button class="actionBtn" id="{{dataValues.id}}">Block</button>
+            {{/equals}}
+            {{#equals dataValues.status 'blocked'}}
+                <button class="actionStatus" id="{{dataValues.id}}">Activate</button>
+            {{/equals}}
+          </td>
         </tr>
         {{/each}}
       </tbody>

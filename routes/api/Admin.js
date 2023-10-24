@@ -22,7 +22,6 @@ router.get("/",admin_authorize,async (req,res) => {
    let services = await getAllServices()
    let services_count = await countService()
    let third_count = await countThirdParties()
-   console.log(third_count)
    let users_count = await countIdentities()
    res.render('user_admin',{layout: 'admin_layout',name,role,phone,services,services_count,third_count,users_count});
 })
@@ -46,6 +45,7 @@ router.get('/thirdparty',admin_authorize, async(req,res) => {
    let {name, role, ueis_id, nid, phone, sex, dob, status} = payload
    const {getAllThirdParties} = require("../../controllers/third_partiesController.js")
    let thirdparties = await getAllThirdParties()
+   
    res.render('thirdparty',{layout:'admin_layout',name,role,ueis_id,thirdparties})
 })
 

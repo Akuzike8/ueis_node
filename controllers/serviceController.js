@@ -47,6 +47,28 @@ class serviceController
             return 0;
         }
     }
+
+    static createService = async (req,res) => {
+        try {
+            const services = require("../models/services")
+
+            const service = await services.create({
+                third_party_id: req.body.third_party_id,
+                name: req.body.name,
+                description: req.body.description,
+                category: req.body.category,
+                status: req.body.status
+            })
+
+            if (!service) throw new Error("Failed to create service");
+
+            return service;
+
+        } catch (error) {
+            console.log(error)
+            return {error: error.message}
+        }
+    }
 }
 
 module.exports = serviceController

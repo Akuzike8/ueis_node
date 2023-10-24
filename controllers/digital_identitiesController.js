@@ -52,19 +52,21 @@ class digital_identitiesController
 
     }
 
-    static getAllIdentities = () => {
+    static getAllIdentities = async() => {
         try {
+            const db = require("../controllers/dbController")
             const identities = require("../models/digital_identities")
             const citizens = require("../models/citizens")
+            const Sequelize = require('sequelize')
 
-            identities.hasOne(citizens)
-
-            const identity = identities.findAll({
-                include:[{
-                    model: citizens,
-                    required: true,
-                }]
-            })
+            const identity = await db.query(`select ueis.digital_identities.nid,
+            CONCAT(nrb.citizens.firstname," ",nrb.citizens.surname) as name,
+            ueis.digital_identities.email,
+            nrb.citizens.phone,
+            nrb.citizens.created_at,
+            ueis.digital_identities.status
+            from ueis.digital_identities inner join nrb.citizens
+            on ueis.digital_identities.nid = nrb.citizens.nid;`,{type: Sequelize.QueryTypes.SELECT})
 
             if (!identity) throw new Error("Identity does not exists");
 
