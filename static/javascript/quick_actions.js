@@ -35,9 +35,10 @@ third_party_reg_btn.addEventListener('click', async(e) => {
                 if(res.status == 201){
                     var cancel = document.getElementById("third_party_reg_cancel_btn")
                     cancel.click()
+                    var table = document.getElementById("thirdparties_table")
+                    table.ajax.reload(null, false);
                 }
-            })
-            .catch((err) => console.error(err.message))
+            }).catch((err) => console.error(err.message))
 
 
     } catch (error) {
@@ -73,10 +74,11 @@ service_reg_btn.addEventListener('click', async(e) =>{
             if(res.status == 201){
                 var cancel = document.getElementById("service_reg_cancel_btn")
                     cancel.click()
+                var table = document.getElementById("services_table")
+                table.ajax.reload(null, false);
             }
-        })
+        }).catch((err) => console.error(err.message))
 
-        alert('inserted')
 
     } catch (error) {
         console.error(error.message)

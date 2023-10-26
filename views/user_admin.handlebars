@@ -182,9 +182,12 @@
           <label class="form-label" for="service_name">Name</label>
           <input class="form-input" type="text" id="service_name" name="service_name" placeholder="service name" required>
 
-          <label class="form-label" for="service_name">Third-Party Id</label>
-          <input class="form-input" type="text" id="service_third-party_id" name="third-party_id" placeholder="e.g 1" required>
-
+          <label class="form-label" for="service_third-party_id">Third-Party</label>
+          <select class="form-input" name="third-party_id" id="service_third-party_id" required>
+            {{#each thirds}}
+                <option value="{{id}}">{{name}}</option>
+            {{/each}}
+          </select>
           <label class="form-label" for="service_name">Description</label>
           <input class="form-input" type="text" id="service_description" name="third-party_id" placeholder="what is the service about?" required>
 
@@ -203,6 +206,30 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="service_reg_cancel_btn">Cancel</button>
         <button type="button" class="btn btn-primary" id="service_reg_btn">Add Service</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="block_services_modal" tabindex="-1" aria-labelledby="blockModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="blockModalLabel" class="">Block Service</h5>
+      </div>
+
+      <div class="modal-body">
+        <!-- service Reg. Form -->
+        <form id="block_modal_form">
+          <p>Are you sure you want to block <b><span id="holder"></span></b></p>
+          <input type="text" id="status" name="status" hidden required>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger">Block</button>
       </div>
     </div>
   </div>

@@ -53,6 +53,7 @@
 
   <script defer src="/static/javascript/links_admin.js"></script>
   <script defer src="/static/javascript/quick_actions.js"></script>
+  <script defer src="/static/javascript/model_functions.js"></script>
 </head>
 
 <body>
@@ -154,7 +155,7 @@
               {title:'Action',
                 "render": function (data, type, row) {
                     if (row.status == 'active')
-                      return `<button data-bs-toggle="modal" data-bs-target="#block_card_modal" class="actionBtn" id="${row.card_id}">Block</button>`;
+                      return `<button data-bs-toggle="modal" data-bs-target="#block_card_modal" class="actionBtn" id="${row.card_id}" onclick="model_function('${row.card_id}')">Block</button>`;
                     else if (row.status == 'blocked')
                       return `<button data-bs-toggle="modal" data-bs-target="#block_card_modal" class="actionStatus" id="${row.card_id}">Activate</button>`;
                 }
@@ -170,7 +171,7 @@
           },
           "columns": [
               {title:'ID', data: 'id'},
-              {title:'Thirdparty', data: ''},
+              {title:'Thirdparty', data: 'third_party'},
               {title:'Name', data: 'name'},
               {title:'Registered on',"render": (data,type,row) => {
                 const date = moment(row.registered_on);
@@ -182,9 +183,9 @@
               {title:'Action',
                 "render": function (data, type, row) {
                   if (row.status == 'active')
-                      return `<button data-bs-toggle="modal" data-bs-target="#block_card_modal" class="actionBtn" id="${row.id}">Block</button>`;
+                      return `<button data-bs-toggle="modal" data-bs-target="#block_services_modal" class="actionBtn" id="${row.id}" onclick="model_function('${row.name}')">Block</button>`;
                     else if (row.status == 'blocked')
-                      return `<button data-bs-toggle="modal" data-bs-target="#block_card_modal" class="actionStatus" id="${row.id}">Activate</button>`;
+                      return `<button data-bs-toggle="modal" data-bs-target="#block_services_modal" class="actionStatus" id="${row.id}">Activate</button>`;
                 }
               }
               // Add more columns as needed
@@ -211,9 +212,9 @@
               {title:'Action',
                 "render": function (data, type, row) {
                   if (row.status == 'active')
-                      return `<button data-bs-toggle="modal" data-bs-target="#block_card_modal" class="actionBtn" id="${row.nid}">Block</button>`;
+                      return `<button data-bs-toggle="modal" data-bs-target="#block_users_modal" class="actionBtn" id="${row.nid}" onclick="model_function('${row.name}')">Block</button>`;
                     else if (row.status == 'blocked')
-                      return `<button data-bs-toggle="modal" data-bs-target="#block_card_modal" class="actionStatus" id="${row.nid}">Activate</button>`;
+                      return `<button data-bs-toggle="modal" data-bs-target="#block_users_modal" class="actionStatus" id="${row.nid}">Activate</button>`;
                 }
               }
               // Add more columns as needed
@@ -226,20 +227,25 @@
               "dataSrc": ""
           },
           "columns": [
-              {title:'ID',data: 'dataValues.company_id'},
-              {title:'Name',data: 'dataValues.name'},
-              {title:'Description',data: 'dataValues.description'},
-              {title:'Location',data: 'dataValues.Location'},
-              {title:'Email',data: 'dataValues.email'},
-              {title:'Phone',data: 'dataValues.phone'},
-              {title:'Registered on',data: 'dataValues.registered_on'},
-              {title:'Status',data: 'dataValues.status'},
+              {title:'ID',data: 'company_id'},
+              {title:'Name',data: 'name'},
+              {title:'Description',data: 'description'},
+              {title:'Location',data: 'Location'},
+              {title:'Email',data: 'email'},
+              {title:'Phone',data: 'phone'},
+              {title:'Registered on',"render": (data,type,row) => {
+                const date = moment(row.registered_on);
+                const formattedTime = date.format('ddd MMM D YYYY HH:mm:ss');
+                return `${formattedTime}`
+               }
+              },
+              {title:'Status',data: 'status'},
               {title:'Action',
                 "render": function (data, type, row) {
                   if (row.status == 'active')
-                      return `<button data-bs-toggle="modal" data-bs-target="#block_card_modal" class="actionBtn" id="${row.dataValues.id}">Block</button>`;
+                      return `<button data-bs-toggle="modal" data-bs-target="#block_third_party_modal" class="actionBtn" id="${row.company_id}" onclick="model_function('${row.name}')">Block</button>`;
                     else if (row.status == 'blocked')
-                      return `<button data-bs-toggle="modal" data-bs-target="#block_card_modal" class="actionStatus" id="${row.dataValues.id}">Activate</button>`;
+                      return `<button data-bs-toggle="modal" data-bs-target="#block_third_party_modal" class="actionStatus" id="${row.company_id}">Activate</button>`;
                 }
               }
               // Add more columns as needed

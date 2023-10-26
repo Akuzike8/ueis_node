@@ -18,12 +18,14 @@ router.get("/",admin_authorize,async (req,res) => {
    let {name, role, ueis_id, nid, phone, sex, dob, status} = payload
    const {countService, getAllServices} = require("../../controllers/serviceController.js")
    const {countIdentities} = require("../../controllers/digital_identitiesController.js")
-   const {countThirdParties} = require("../../controllers/third_partiesController.js")
+   const {countThirdParties, getAllThirdParties} = require("../../controllers/third_partiesController.js")
    let services = await getAllServices()
    let services_count = await countService()
    let third_count = await countThirdParties()
    let users_count = await countIdentities()
-   res.render('user_admin',{layout: 'admin_layout',name,role,phone,services,services_count,third_count,users_count});
+   let thirds = await getAllThirdParties()
+
+   res.render('user_admin',{layout: 'admin_layout',name,role,phone,services,services_count,third_count,users_count,thirds});
 })
 
 router.get('/card_reg',admin_authorize,(req,res) => {

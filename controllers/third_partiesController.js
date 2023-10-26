@@ -42,12 +42,14 @@ class third_partiesController
 
     static getAllThirdParties = async () => {
         try {
-            const third_parties = require("../models/third_parties")
-
-            const third_party = await third_parties.findAll()
+            const db = require("../controllers/dbController")
+            const Sequelize = require('sequelize')
+            
+            const third_party = await db.query(`SELECT * FROM third_parties;`,{type: Sequelize.QueryTypes.SELECT})
 
             if (!third_party) throw new Error("third party does not exists");
 
+            console.log(third_party)
             return third_party;
 
         } catch (error) {

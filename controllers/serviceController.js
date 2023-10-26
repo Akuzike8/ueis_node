@@ -18,9 +18,13 @@ class serviceController
 
     static getAllServices = async () => {
         try {
-            const services = require("../models/services")
+            const db = require("../controllers/dbController")
+            const Sequelize = require('sequelize')
 
-            const service = await services.findAll()
+            const service = await db.query(`select services.id as id,third_parties.name as third_party, services.name as name, services.category as category, services.description as description,services.status as status,services.registered_on as registered_on
+                                            from services
+                                            inner join third_parties
+                                            on third_parties.id = services.third_party_id;`,{type: Sequelize.QueryTypes.SELECT})
 
             if (!service) throw new Error("service does not exists");
 
@@ -56,17 +60,16 @@ class serviceController
                 third_party_id: req.body.third_party_id,
                 name: req.body.name,
                 description: req.body.description,
-                category: req.body.category,
-                status: req.body.status
+                category: req.body.category
             })
 
             if (!service) throw new Error("Failed to create service");
 
-            return service;
+            return res.status(201).json({message: 'created', status: 201});
 
         } catch (error) {
-            console.log(error)
-            return {error: error.message}
+
+            return res.status(400).json({error: error.message, status: 400});
         }
     }
 }
