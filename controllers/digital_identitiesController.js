@@ -55,8 +55,6 @@ class digital_identitiesController
     static getAllIdentities = async() => {
         try {
             const db = require("../controllers/dbController")
-            const identities = require("../models/digital_identities")
-            const citizens = require("../models/citizens")
             const Sequelize = require('sequelize')
 
             const identity = await db.query(`select ueis.digital_identities.nid,
@@ -137,6 +135,22 @@ class digital_identitiesController
         } catch (error) {
 
             return 0;
+        }
+    }
+
+    static updateStatus = async (req,res) => {
+        try {
+            const identities = require("../models/digital_identities")
+
+            const identity = await identities.update({status: req.body.status},{where:{ueis_id: req.body.ueis_id}})
+
+            if (!identity) throw new Error("Failed to update Identity");
+
+            return {status: 200};
+
+        } catch (error) {
+
+            return {error: 400};
         }
     }
 }

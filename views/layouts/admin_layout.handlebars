@@ -39,8 +39,6 @@
   <!-- Custom styles -->
   <link href="/static/css/dashboard.css" rel="stylesheet">
 
-
-
   <script defer src="/static/javascript/bootstrap.bundle.min.js"></script>
 
   <script defer src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
@@ -54,6 +52,7 @@
   <!-- Custom JS -->
 
   <script defer src="/static/javascript/links_admin.js"></script>
+  <script defer src="/static/javascript/quick_actions.js"></script>
 </head>
 
 <body>
@@ -134,55 +133,122 @@
   <!-- Scripts for DataTables -->
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="/static/javascript/moment.js"></script>
     <script>
-      $().DataTable();
-      new DataTable('#services_table',{
-        columns:[
-          {title:'ID'},
-          {title:'Thirdparty'},
-          {title:'Name'},
-          {title:'Category'},
-          {title:'Registered on'},
-          {title:'Status'},
-          {title:'Action'},
-        ],
+      $(document).ready(function () {
+      const cards_table = $('#cards_table').DataTable({
+          "ajax": {
+              "url": "/Admin/cards_table",
+              "dataSrc": ""
+          },
+          "columns": [
+              {title:'National ID',data: 'nid'},
+              {title:'card ID',data: 'card_id'},
+              {title:'Registered on',"render": (data,type,row) => {
+                const date = moment(row.registered_on);
+                const formattedTime = date.format('ddd MMM D YYYY HH:mm:ss');
+                return `${formattedTime}`
+               }
+              },
+              {title:'Status',data: 'status'},
+              {title:'Action',
+                "render": function (data, type, row) {
+                    if (row.status == 'active')
+                      return `<button data-bs-toggle="modal" data-bs-target="#block_card_modal" class="actionBtn" id="${row.card_id}">Block</button>`;
+                    else if (row.status == 'blocked')
+                      return `<button data-bs-toggle="modal" data-bs-target="#block_card_modal" class="actionStatus" id="${row.card_id}">Activate</button>`;
+                }
+              }
+              // Add more columns as needed
+          ]
       });
 
-      new DataTable('#cards_table',{
-        columns:[
-          {title:'card ID'},
-          {title:'UEIS ID'},
-          {title:'Registered on'},
-          {title:'Status'},
-          {title:'Action'},
-        ],
+      const services_table = $('#services_table').DataTable({
+          "ajax": {
+              "url": "/Admin/services_table",
+              "dataSrc": ""
+          },
+          "columns": [
+              {title:'ID', data: 'id'},
+              {title:'Thirdparty', data: ''},
+              {title:'Name', data: 'name'},
+              {title:'Registered on',"render": (data,type,row) => {
+                const date = moment(row.registered_on);
+                const formattedTime = date.format('ddd MMM D YYYY HH:mm:ss');
+                return `${formattedTime}`
+               }
+              },
+              {title:'Status', data: 'status'},
+              {title:'Action',
+                "render": function (data, type, row) {
+                  if (row.status == 'active')
+                      return `<button data-bs-toggle="modal" data-bs-target="#block_card_modal" class="actionBtn" id="${row.id}">Block</button>`;
+                    else if (row.status == 'blocked')
+                      return `<button data-bs-toggle="modal" data-bs-target="#block_card_modal" class="actionStatus" id="${row.id}">Activate</button>`;
+                }
+              }
+              // Add more columns as needed
+          ]
       });
 
-      new DataTable('#users_table',{
-        columns:[
-          {title:'National ID'},
-          {title:'Name'},
-          {title:'Email'},
-          {title:'Phone'},
-          {title:'Registered on'},
-          {title:'Status'},
-          {title:'Action'},
-        ],
+      const users_table = $('#users_table').DataTable({
+          "ajax": {
+              "url": "/Admin/users_table",
+              "dataSrc": ""
+          },
+          "columns": [
+              {title:'National ID', data: 'nid'},
+              {title:'Name', data: 'name'},
+              {title:'Email', data: 'email'},
+              {title:'Phone', data: 'phone'},
+              {title:'Registered on',"render": (data,type,row) => {
+                const date = moment(row.created_at);
+                const formattedTime = date.format('ddd MMM D YYYY HH:mm:ss');
+                return `${formattedTime}`
+               }
+              },
+              {title:'Status', data: 'status'},
+              {title:'Action',
+                "render": function (data, type, row) {
+                  if (row.status == 'active')
+                      return `<button data-bs-toggle="modal" data-bs-target="#block_card_modal" class="actionBtn" id="${row.nid}">Block</button>`;
+                    else if (row.status == 'blocked')
+                      return `<button data-bs-toggle="modal" data-bs-target="#block_card_modal" class="actionStatus" id="${row.nid}">Activate</button>`;
+                }
+              }
+              // Add more columns as needed
+          ]
       });
 
-      new DataTable('#thirdparties_table',{
-        columns:[
-          {title:'ID'},
-          {title:'Name'},
-          {title:'Description'},
-          {title:'Location'},
-          {title:'Email'},
-          {title:'Phone'},
-          {title:'Registered on'},
-          {title:'Status'},
-          {title:'Action'},
-        ],
+      const third_table = $('#thirdparties_table').DataTable({
+          "ajax": {
+              "url": "/Admin/thirdparties_table",
+              "dataSrc": ""
+          },
+          "columns": [
+              {title:'ID',data: 'dataValues.company_id'},
+              {title:'Name',data: 'dataValues.name'},
+              {title:'Description',data: 'dataValues.description'},
+              {title:'Location',data: 'dataValues.Location'},
+              {title:'Email',data: 'dataValues.email'},
+              {title:'Phone',data: 'dataValues.phone'},
+              {title:'Registered on',data: 'dataValues.registered_on'},
+              {title:'Status',data: 'dataValues.status'},
+              {title:'Action',
+                "render": function (data, type, row) {
+                  if (row.status == 'active')
+                      return `<button data-bs-toggle="modal" data-bs-target="#block_card_modal" class="actionBtn" id="${row.dataValues.id}">Block</button>`;
+                    else if (row.status == 'blocked')
+                      return `<button data-bs-toggle="modal" data-bs-target="#block_card_modal" class="actionStatus" id="${row.dataValues.id}">Activate</button>`;
+                }
+              }
+              // Add more columns as needed
+          ]
       });
+
+      // Additional initialization and live reloading code
+  });
+
   </script>
 </body>
 

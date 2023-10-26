@@ -7,7 +7,7 @@ const { createService } = require("../../controllers/serviceController.js");
 
 router.post('/add',admin_authorize, createService)
 
-router.put('/update',admin_authorize)
+router.post('/update',admin_authorize)
 
 router.post('/banks',authorize, async(req,res) => {
     let token = req.body.otp

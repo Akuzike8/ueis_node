@@ -26,7 +26,7 @@ router.post('/auth', async (req,res) => {
             var [ueis_id,error] = input.split("T")
             let uid = ueis_id
             const card_ueis = await cardcontroller.retrive(ueis_id);
-            
+
             if(id != card_ueis) throw new Error('Fake card');
 
             jwt.sign(ueis_id,privatekey,{algorithm:'RS256',allowInsecureKeySizes:true}, async (err,token) => {
@@ -54,6 +54,7 @@ router.post('/auth', async (req,res) => {
                 req.session.dob = `${dob}`
                 req.session.status = `${status}`
                 req.session.fid = `${fingerprint_id}`
+                
                 return res.status(201).redirect('/Auth/fingerprint')
             })
 
@@ -102,4 +103,18 @@ router.post('/register',admin_authorize, async (req,res) => {
     }
 })
 
+router.post('/update',admin_authorize, async (req,res) => {
+    try {
+        const status = req.body.status
+        const card_id = req.body.card_id
+
+        cardcontroller.updateStatus(status,card_id)
+
+        res.status(200).json({message:"card updated"})
+
+    } catch (error) {
+
+        return res.status(400).render('error',{layout: false,status:400,error:error.message})
+    }
+})
 module.exports = router;

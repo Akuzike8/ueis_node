@@ -10,5 +10,6 @@ const {createUser,findUser, createIdentity} = require("../../controllers/digital
 router.post('/', createIdentity);
 
 //updating user
+router.post('/update',admin_authorize,)
 
 module.exports = router;

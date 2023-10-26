@@ -9,22 +9,25 @@ const third_parties = db.define('third_parties', {
         autoIncrement: true
     },
 
-    name:{type: Sequelize.STRING},
+    name:{type: Sequelize.STRING,allowNull: false},
 
-    company_id:{type: Sequelize.STRING},
+    company_id:{type: Sequelize.STRING,allowNull: false},
 
-    description:{type: Sequelize.STRING},
+    description:{type: Sequelize.STRING,allowNull: false},
 
-    email:{type: Sequelize.STRING},
+    email:{type: Sequelize.STRING,allowNull: false},
 
-    phone:{type: Sequelize.STRING},
+    phone:{type: Sequelize.STRING,allowNull: false},
 
-    Location:{type: Sequelize.STRING},
+    Location:{type: Sequelize.STRING,allowNull: false},
 
     status:{
-        type: Sequelize.ENUM(['valid','invalid']),
-        defaultValue: 'valid'
+        type: Sequelize.ENUM(['active','inactive','blocked']),
+        defaultValue: 'active',
+        allowNull: false
     },
+
+    registered_on:{type: Sequelize.DATE}
 
 })
 

@@ -41,6 +41,7 @@ router.get('/login',authorize,(req,res) => {
       if(role == 'admin') res.redirect('/Admin/')
 
    } catch (error) {
+      
       res.render('error',{layout:false,status:400,error:error.message})
    }
 

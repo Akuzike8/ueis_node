@@ -25,6 +25,10 @@ hbs.handlebars.registerHelper('equals',(arg1,arg2,options) =>{
   return (arg1 == arg2) ? options.fn(this) : options.inverse(this)
 })
 
+hbs.handlebars.registerHelper('date',(arg1,arg2) =>{
+  const moment = require('moment');
+  return moment(arg1).format(arg2);
+})
 app.use(cors());
 
 app.use(cookieParser());
@@ -57,6 +61,8 @@ app.use("/identity",require("./routes/api/identity"));
 app.use('/card',require("./routes/api/card"));
 
 app.use('/service',require("./routes/api/service"));
+
+app.use('/third',require("./routes/api/third"));
 
 app.use('/test',require("./routes/api/Test"));
 

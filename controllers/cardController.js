@@ -1,3 +1,5 @@
+const { Sequelize } = require("sequelize");
+const digital_identities = require("../models/digital_identities");
 
 
 class cardController
@@ -21,16 +23,32 @@ class cardController
 
     static getAllCards = async () => {
         try {
-            const cards = require("../models/cards")
+            const db = require("../controllers/dbController")
 
-            const card = await cards.findAll()
+            const card = await db.query("SELECT `cards`.`id`,`cards`.`status`, `cards`.`card_id`,`nid`, `cards`.`registered_on`, `digital_identity`.`ueis_id` FROM `cards` AS `cards` INNER JOIN `digital_identities` AS `digital_identity` ON cards.ueis_id = digital_identity.ueis_id;",{type: Sequelize.QueryTypes.SELECT})
 
             if (!card) throw new Error("card does not exists");
 
             return card
 
         } catch (error) {
+            console.log(error.message)
+            return {error: error.message}
+        }
+    }
 
+    static updateStatus = async (status,card_id) => {
+        try {
+            const cards = require("../models/cards")
+
+            const card = await cards.update({status},{where:{card_id}})
+
+            if (!card) throw new Error("card failed to update");
+
+            return card
+
+        } catch (error) {
+            console.log(error.message)
             return {error: error.message}
         }
     }

@@ -1,5 +1,29 @@
 class third_partiesController
 {
+    static createThirdParty = async (req,res) => {
+        try {
+            const thirds = require("../models/third_parties")
+
+            const third = await thirds.create({
+                company_id: req.body.company_id,
+                name: req.body.name,
+                description: req.body.description,
+                email: req.body.email,
+                phone: req.body.phone,
+                Location: req.body.location,
+                status: req.body.status
+            })
+
+            if (!third) throw new Error("Failed to create third party");
+
+            return res.status(201).json({message: 'created', status: 201});
+
+        } catch (error) {
+            console.log(error)
+            return res.status(400).json({error: error.message, status: 400});
+        }
+    }
+
     static findThirdParty = async (id) => {
         try {
             const third_parties = require("../models/third_parties")
@@ -27,6 +51,7 @@ class third_partiesController
             return third_party;
 
         } catch (error) {
+            console.log(error.message)
             return {error:error.message}
         }
     }
@@ -44,6 +69,22 @@ class third_partiesController
         } catch (error) {
 
             return 0;
+        }
+    }
+
+    static updateStatus = async (req,res) => {
+        try {
+            const thirds = require("../models/third_parties")
+
+            const third = await thirds.update({status: req.body.status},{where:{company_id: req.body.company_id}})
+
+            if (!third) throw new Error("Failed to update third party");
+
+            return {status: 200};
+
+        } catch (error) {
+
+            return {error: 400};
         }
     }
 }
