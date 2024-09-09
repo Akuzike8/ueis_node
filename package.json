@@ -18,7 +18,7 @@
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^9.0.2",
     "moment": "^2.29.4",
-    "mysql2": "^3.6.1",
+    "mysql2": "^3.10.0",
     "node-gyp": "^9.4.0",
     "node-rfid": "^1.0.7",
     "node-rsa": "^1.1.1",
